@@ -66,7 +66,7 @@ class AppServiceProvider extends ServiceProvider
 
     private function shareViewData(): void
     {
-        View::composer(['components.layouts.site', 'components.site.*', 'site.*'], function ($view) {
+        View::composer(['components.layouts.site', 'components.site.*', 'site.*', 'errors.*'], function ($view) {
             $view->with([
                 'siteProfile' => once(fn () => Profile::current()->loadMissing('media')),
                 'siteSections' => once(fn () => (array) Settings::get('sections.visible')),

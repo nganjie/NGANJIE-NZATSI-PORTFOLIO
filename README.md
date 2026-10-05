@@ -1,58 +1,125 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Portfolio de Nganjie Nzatsi
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Portfolio personnel administrable de Nganjie Nzatsi, développeur full stack C# .NET / Angular à Douala.
 
-## About Laravel
+- **Site public** : accueil, liste des projets filtrable, études de cas, formulaire de contact, téléchargement du CV.
+- **Administration** (`/admin`) : tout le contenu se modifie sans toucher au code (profil, CV, projets, compétences, technologies, parcours, méthode, messages, médias, paramètres).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+La documentation complète (spécifications, plans d'étapes, identité visuelle) est dans [`docs/`](docs/README.md).
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+| Couche | Choix |
+|---|---|
+| Framework | Laravel 13 (PHP 8.3+) |
+| Site public | Blade + Tailwind CSS 4, rendu serveur |
+| Administration | Livewire 4 (Alpine.js inclus), éditeur Trix |
+| Base de données | PostgreSQL 16 |
+| Traductions | `spatie/laravel-translatable` (FR aujourd'hui, EN prêt pour la V2) |
+| Images | `spatie/laravel-medialibrary` : WebP en 400 / 800 / 1600 px |
+| Tests | Pest 4 (SQLite et PostgreSQL) |
+| Serveur web | Caddy (HTTPS automatique en production) |
 
-## Learning Laravel
+## Démarrage local avec Docker (recommandé)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+Prérequis : Docker et Docker Compose.
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+cp .env.example .env
+# Dans .env : renseigner ADMIN_PASSWORD (DB_HOST et MAIL_HOST sont fournis par docker-compose.yml)
+docker compose up -d
+docker compose exec app composer install
+docker compose exec app php artisan key:generate
+docker compose exec app php artisan migrate --seed
+docker compose exec app php artisan storage:link
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+| Service | Adresse |
+|---|---|
+| Site | http://localhost:8000 |
+| Administration | http://localhost:8000/admin |
+| E-mails reçus (Mailpit) | http://localhost:8025 |
+| Vite (rechargement à chaud) | http://localhost:5173 |
 
-## Contributing
+Services lancés par `docker-compose.yml` : `app` (PHP-FPM), `web` (Caddy), `queue` (worker de file d'attente : conversions d'images, e-mails), `vite`, `db` (PostgreSQL), `mailpit`.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Démarrage local sans Docker
 
-## Code of Conduct
+Prérequis : PHP 8.3+ (extensions `pdo_pgsql`, `gd`, `intl`, `zip`, `exif`), Composer, Node 22, PostgreSQL.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+cp .env.example .env            # renseigner DB_* et ADMIN_PASSWORD
+composer install
+npm install
+php artisan key:generate
+php artisan migrate --seed
+php artisan storage:link
+composer run dev                # serveur + worker de file d'attente + Vite
+```
 
-## Security Vulnerabilities
+## Compte administrateur
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- Le seed crée le compte `ADMIN_EMAIL` avec le mot de passe `ADMIN_PASSWORD` du fichier `.env`. Si `ADMIN_PASSWORD` est vide, un mot de passe aléatoire est affiché une seule fois dans la console.
+- Pour créer le compte ou changer son mot de passe à tout moment : `php artisan admin:create`.
+- Le mot de passe se change aussi depuis **Administration › Paramètres**.
 
-## License
+## Mise en production
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Le fichier `docker-compose.prod.yml` lance : `app` (PHP-FPM, migrations automatiques au démarrage), `queue`, `scheduler`, `web` (Caddy avec certificat HTTPS Let's Encrypt automatique) et `db` (PostgreSQL, non exposé).
+
+Sur un serveur (VPS) avec Docker, et un nom de domaine qui pointe vers son adresse IP :
+
+```bash
+git clone <ce dépôt> portfolio && cd portfolio
+cp .env.production.example .env
+# Compléter .env : APP_KEY, APP_URL, SITE_ADDRESS (le domaine), DB_PASSWORD, MAIL_*, ADMIN_PASSWORD
+docker compose -f docker-compose.prod.yml run --rm app php artisan key:generate --show   # copier la clé dans APP_KEY
+docker compose -f docker-compose.prod.yml up -d --build
+docker compose -f docker-compose.prod.yml exec app php artisan db:seed --force          # premier lancement uniquement
+```
+
+Mise à jour :
+
+```bash
+git pull
+docker compose -f docker-compose.prod.yml up -d --build
+```
+
+Sauvegarde de la base (le dossier `backups/` est monté dans le conteneur `db`) :
+
+```bash
+docker compose -f docker-compose.prod.yml exec db sh -c 'pg_dump -U "$POSTGRES_USER" "$POSTGRES_DB" > /backups/portfolio-$(date +%F).sql'
+```
+
+Les médias envoyés sont dans le volume Docker `media` : à inclure dans les sauvegardes.
+
+## Commandes utiles
+
+| Commande | Rôle |
+|---|---|
+| `php artisan test` | Lancer les tests |
+| `vendor/bin/pint` | Formater le code PHP |
+| `npm run build` | Construire les fichiers front |
+| `php artisan admin:create` | Créer l'administrateur ou changer son mot de passe |
+| `php artisan messages:purge` | Effacer les messages supprimés depuis plus de 30 jours (planifié chaque nuit) |
+| `php artisan db:seed` | Recharger le contenu initial (ne crée pas de doublons) |
+
+## Organisation du code
+
+```
+app/
+  Enums/                 types et statuts (projet, expérience, message, couleur)
+  Http/Controllers/Site  pages publiques, contact, CV, sitemap
+  Http/Controllers/Admin connexion et mot de passe oublié
+  Livewire/Admin/        écrans d'administration
+  Models/                modèles Eloquent (champs traduisibles, médias)
+  Support/               paramètres, nettoyage HTML, envoi de médias, statistiques
+database/seeders/        contenu initial (data/projects.php : les projets)
+resources/views/
+  site/                  pages publiques
+  components/site/       composants publics (image, bloc projet, titres…)
+  components/admin/      composants d'administration
+  livewire/admin/        vues des écrans d'administration
+docker/                  Dockerfile, configuration PHP et Caddy
+docs/                    spécifications, plans, designs
+```

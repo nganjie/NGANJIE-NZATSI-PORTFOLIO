@@ -26,10 +26,11 @@ Un seul enregistrement, créé par le seed ou une commande `php artisan admin:cr
 | availability_label | json **T** | « Disponible pour un stage ou un emploi » |
 | email | string | |
 | whatsapp | string, null | Numéro international |
+| phone | string, null | Affiché dans la section contact |
 | github_url, linkedin_url | string, null | |
 | cv_updated_at | date, null | |
 | featured_project_id | FK projects, null | Projet phare du haut de page |
-| (médias) | | `photo`, `cv` via medialibrary |
+| (médias) | | `photo`, `cv`, `share_image` (image de partage par défaut) via medialibrary |
 
 ## projects
 | Colonne | Type | Notes |
@@ -37,7 +38,7 @@ Un seul enregistrement, créé par le seed ou une commande `php artisan admin:cr
 | title | json **T** | |
 | slug | string, unique | Généré depuis le titre FR, modifiable |
 | summary | json **T** | Résumé (cartes, SEO par défaut) |
-| type | enum `professional` / `personal` / `academic` | |
+| type | enum `professional` / `freelance` / `personal` / `academic` | |
 | context | json **T** | « SIGP SC Cameroun, en équipe » |
 | role | json **T** | |
 | period | json **T** | Texte libre : « Depuis août 2024 » |
@@ -45,6 +46,7 @@ Un seul enregistrement, créé par le seed ou une commande `php artisan admin:cr
 | case_study | json **T** | HTML issu de l'éditeur riche, nettoyé |
 | lesson | json **T**, null | Enseignement retenu |
 | results | json **T**, null | Une ligne par résultat |
+| tags | json **T**, null | Étiquettes (Fintech, Éducation…), une par ligne |
 | accent_color | string | Une des couleurs du thème (`violet`, `lime`, `night`, `lilac`, `black`, `grey`) |
 | status | enum `draft` / `published` | |
 | is_featured | boolean | Affiché sur l'accueil |
@@ -65,18 +67,19 @@ Index : `(status, position)`, `(is_featured, position)`.
 `project_id`, `technology_id`, `position`. Clé primaire composite.
 
 ## skill_domains
-`title` **T**, `description` **T**, `tags` json **T** (liste d'étiquettes par langue), `position`.
+`title` **T**, `description` **T**, `tags` **T** (une étiquette par ligne), `position`.
 
 ## experiences
 | Colonne | Type | Notes |
 |---|---|---|
 | type | enum `job` / `education` | |
 | organization | string | |
+| location | string, null | Ville |
 | title | json **T** | Intitulé du poste ou de la formation |
 | started_at | date, null | |
 | ended_at | date, null | null = en cours |
 | date_label | json **T**, null | Libellé libre si les dates exactes sont inconnues |
-| highlights | json **T** | Liste de points clés |
+| highlights | json **T** | Points clés, un par ligne |
 | is_current | boolean | Ligne violette mise en avant |
 | position | unsigned int | |
 

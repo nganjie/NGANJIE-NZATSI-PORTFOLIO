@@ -1,6 +1,6 @@
 # 03 — Modèle de données et seed
 
-**Statut** : À faire · **Prérequis** : 01 · **Bloquée par** : —
+**Statut** : Terminé · **Prérequis** : 01 · **Bloquée par** : —
 
 ## Objectif
 Créer toutes les tables, modèles, relations et enums de la V1, et un seed qui rend le site présentable dès le premier lancement.
@@ -18,15 +18,15 @@ Créer toutes les tables, modèles, relations et enums de la V1, et un seed qui 
 - Commande `php artisan admin:create`.
 
 ## Tâches
-- [ ] Écrire les migrations et les index
-- [ ] Écrire les enums (avec méthode `label()` en français)
-- [ ] Écrire les modèles et relations
-- [ ] Scopes `published`, `featured`, `ordered`
-- [ ] Génération du slug unique depuis le titre français
-- [ ] Factories
-- [ ] Seeders avec les données réelles (ignorer les champs à fournir)
-- [ ] Classe `Settings` + invalidation du cache à l'écriture
-- [ ] Commande `admin:create`
+- [x] Écrire les migrations et les index
+- [x] Écrire les enums (avec méthode `label()` en français)
+- [x] Écrire les modèles et relations
+- [x] Scopes `published`, `featured`, `ordered`
+- [x] Génération du slug unique depuis le titre français
+- [x] Factories
+- [x] Seeders avec les données réelles (ignorer les champs à fournir)
+- [x] Classe `Settings` + invalidation du cache à l'écriture
+- [x] Commande `admin:create`
 
 ## Critères d'acceptation
 - `php artisan migrate:fresh --seed` se termine sans erreur sur PostgreSQL.
@@ -37,3 +37,10 @@ Créer toutes les tables, modèles, relations et enums de la V1, et un seed qui 
 - Relations et scopes de chaque modèle.
 - Unicité et génération du slug.
 - Les champs traduisibles renvoient le français par défaut et retombent sur le français si l'anglais est vide.
+
+## Notes de réalisation (2026-10-05)
+
+- Une migration unique `2026_10_05_230000_create_portfolio_tables`.
+- Ajouts par rapport à la spec : `projects.tags`, `profiles.phone`, `experiences.location`, type `freelance`.
+- Seed réécrit à partir du CV et de la recherche web (voir `specs/recherche-projets.md`) : 14 projets, 6 lignes de parcours, CV PDF joint.
+- Correction : le profil est désormais retrouvé par `Profile::current()` (bug détecté par les tests sur PostgreSQL).

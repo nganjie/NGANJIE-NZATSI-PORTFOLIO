@@ -23,7 +23,7 @@ Maquettes : [designs/ecrans.md](../designs/ecrans.md) — écrans « Connexion �
 - Indicateurs : messages non lus, projets publiés, brouillons, date du CV.
 - Derniers messages (5) avec lien vers la boîte de réception.
 - État du site : mention de disponibilité affichée ou non, nombre de projets à la une, photo et CV présents ou manquants, avec un bouton « Compléter le profil ».
-- Encadré « V2 » à la place des statistiques de visites (visites du mois, vues des projets, téléchargements du CV, visites par jour, projets les plus vus).
+- Visites du mois, téléchargements du CV du mois et projets les plus vus sur 30 jours (hors administrateur et robots). Le graphique des visites par jour reste prévu en V2.
 
 ## Profil et CV
 
@@ -61,11 +61,14 @@ Même modèle d'écran pour les quatre : liste ordonnable + formulaire de créat
 
 ## Médias
 
-- Bibliothèque des images envoyées : vignette, nom, dimensions, poids, texte alternatif, utilisée dans (projets).
-- Envoi par glisser-déposer ; suppression refusée si l'image est utilisée.
+- Bibliothèque des images envoyées : vignette, nom, dimensions, poids, texte alternatif, « utilisée dans » (projet ou profil).
+- Modification du texte alternatif et de la légende ; suppression avec confirmation (l'image disparaît aussi du site).
+- L'envoi se fait depuis la fiche d'un projet (couverture, galerie), le profil (photo, CV) et les paramètres (image de partage).
 
 ## Paramètres
 
 - Référencement par défaut : titre, description, image de partage.
 - Sections de l'accueil affichées ou masquées.
 - E-mail qui reçoit les notifications de contact.
+- Image de partage par défaut.
+- Changement du mot de passe de l'administrateur.

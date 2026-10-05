@@ -111,3 +111,10 @@ test('the CV is downloadable once uploaded', function () {
         ->assertOk()
         ->assertHeader('Content-Type', 'application/pdf');
 });
+
+test('unknown pages show the custom 404 page', function () {
+    $this->get('/projets/inexistant')
+        ->assertNotFound()
+        ->assertSee('Cette page')
+        ->assertSee('noindex', false);
+});

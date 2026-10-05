@@ -12,6 +12,10 @@ Le bouton **Play** permet de naviguer entre les écrans (liens, filtres, onglets
 
 Cette maquette (v3) remplace la maquette v2 (« Maquette portfolio Nganjie ») pour la version mobile et l'administration (décision D10).
 
+## Mise en œuvre
+
+Les 9 écrans sont réalisés dans l'application (octobre 2026) et ont été comparés à la maquette par captures à 1440 px et 390 px. Les écrans « non dessinés » listés dans [ecrans.md](ecrans.md) ont été construits en suivant les écrans existants.
+
 ## Contenu du dossier
 
 | Fichier | Contenu |

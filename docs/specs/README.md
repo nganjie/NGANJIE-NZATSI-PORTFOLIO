@@ -15,3 +15,4 @@
 | [securite.md](securite.md) | Authentification, autorisations, protections |
 | [seo-performance-accessibilite.md](seo-performance-accessibilite.md) | Référencement, vitesse, accessibilité |
 | [donnees-initiales.md](donnees-initiales.md) | Contenu du seed |
+| [recherche-projets.md](recherche-projets.md) | Ce que disent le CV et la recherche web sur chaque projet |

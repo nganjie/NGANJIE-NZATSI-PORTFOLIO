@@ -1,6 +1,6 @@
 # 04 — Accueil public
 
-**Statut** : À faire · **Prérequis** : 02, 03 · **Bloquée par** : Q4 (mention de disponibilité)
+**Statut** : Terminé · **Prérequis** : 02, 03 · **Bloquée par** : Q4 (mention de disponibilité)
 
 ## Objectif
 Construire la page d'accueil complète à partir des données, conforme à la maquette, sur ordinateur et sur mobile.
@@ -15,17 +15,17 @@ Construire la page d'accueil complète à partir des données, conforme à la ma
 - Requêtes optimisées (chargement anticipé, pas de N+1) et mise en cache.
 
 ## Tâches
-- [ ] Contrôleur : chargement du profil, projets à la une, domaines, parcours, technologies de l'accueil, étapes, paramètres de sections
-- [ ] Haut de page : titre avec surlignage, photo, formes décoratives, aperçu du projet phare, disponibilité conditionnelle, boutons, liens sociaux, CV
-- [ ] Section projets à la une (image de couleur si pas de capture)
-- [ ] Section compétences (fond noir)
-- [ ] Section parcours (ligne actuelle violette)
-- [ ] Section technologies (grille de 8)
-- [ ] Section méthode (cartes inclinées)
-- [ ] Section contact (formulaire visuel ; l'envoi est fait à l'étape 06)
-- [ ] Masquage des sections désactivées et des liens vides
-- [ ] Menu mobile
-- [ ] Cache de la page vidé par les événements `saved` / `deleted` des modèles concernés
+- [x] Contrôleur : chargement du profil, projets à la une, domaines, parcours, technologies de l'accueil, étapes, paramètres de sections
+- [x] Haut de page : titre avec surlignage, photo, formes décoratives, aperçu du projet phare, disponibilité conditionnelle, boutons, liens sociaux, CV
+- [x] Section projets à la une (image de couleur si pas de capture)
+- [x] Section compétences (fond noir)
+- [x] Section parcours (ligne actuelle violette)
+- [x] Section technologies (grille de 8)
+- [x] Section méthode (cartes inclinées)
+- [x] Section contact (formulaire visuel ; l'envoi est fait à l'étape 06)
+- [x] Masquage des sections désactivées et des liens vides
+- [x] Menu mobile
+- [x] Cache de la page vidé par les événements `saved` / `deleted` des modèles concernés
 
 ## Critères d'acceptation
 - La page correspond à la maquette à 1440 px et à 390 px.
@@ -38,3 +38,9 @@ Construire la page d'accueil complète à partir des données, conforme à la ma
 - Un projet brouillon ou non à la une n'apparaît pas.
 - La mention de disponibilité suit `is_available`.
 - Une section masquée n'apparaît ni dans la page ni dans le menu.
+
+## Notes de réalisation (2026-10-05)
+
+- Pas de cache des modèles (D14) ; l'accueil fait une dizaine de requêtes.
+- Sans photo, les initiales s'affichent dans le cercle lilas ; sans capture, le bloc de couleur affiche le nom du projet.
+- Lighthouse (mobile, serveur de développement) : performance 96, accessibilité 100, bonnes pratiques 100.

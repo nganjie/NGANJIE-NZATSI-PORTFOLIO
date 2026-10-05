@@ -11,16 +11,16 @@
 | `thumb` | 400 px | Admin, vignettes |
 | `md` | 800 px | Cartes de projet |
 | `lg` | 1600 px | Couverture, galerie |
-| `og` | 1200 × 630 recadré | Aperçu de partage |
+| `og` | 1200 × 630 recadré (JPEG) | Aperçu de partage (couverture de projet, image de partage du profil) |
 
-- Chaque déclinaison existe en **WebP** (qualité 80) ; l'original est conservé.
+- `thumb`, `md` et `lg` sont en **WebP** (qualité 80) ; l'original est conservé. Les conversions sont faites par le worker de file d'attente : sans worker, l'original est affiché.
 - Affichage : `<img>` avec `srcset`, `sizes`, `width` / `height` (pas de décalage de mise en page), `loading="lazy"` sauf pour l'image du haut de page.
 - Texte alternatif obligatoire (traduisible) ; légende facultative.
 - Tant qu'un projet n'a pas d'image, on affiche le bloc de couleur d'accent avec le filet intérieur (comme dans la maquette), sans texte.
 
 ## Photo de profil
 
-Recadrée en carré, déclinaisons 300 et 600 px.
+Recadrée en carré, déclinaisons `sm` (300 px) et `md` (600 px) en WebP. Sans photo, les initiales s'affichent.
 
 ## CV
 

@@ -1,6 +1,6 @@
 # 14 — Déploiement
 
-**Statut** : À faire · **Prérequis** : toutes les étapes V1 · **Bloquée par** : Q2 (domaine), Q3 (hébergement)
+**Statut** : En cours (bloquée par Q2, Q3) · **Prérequis** : toutes les étapes V1 · **Bloquée par** : Q2 (domaine), Q3 (hébergement)
 
 ## Objectif
 Mettre le site en ligne de façon sûre, reproductible et sauvegardée.
@@ -18,11 +18,11 @@ Mettre le site en ligne de façon sûre, reproductible et sauvegardée.
 ## Tâches
 - [ ] Acheter / configurer le domaine (Q2)
 - [ ] Préparer le serveur (Q3) : Docker, pare-feu, utilisateur dédié
-- [ ] Image de production (OPcache, `optimize`, assets construits)
+- [x] Image de production (OPcache, `optimize`, assets construits)
 - [ ] HTTPS et redirection, HSTS
 - [ ] Service SMTP de production pour les notifications
-- [ ] Worker et planificateur (`schedule:work` ou cron)
-- [ ] Pipeline CI
+- [x] Worker et planificateur (`schedule:work` ou cron)
+- [x] Pipeline CI
 - [ ] Sauvegardes + test de restauration
 - [ ] Création du compte administrateur en production
 - [ ] Vérification finale : formulaire de contact, CV, aperçu de partage
@@ -35,3 +35,8 @@ Mettre le site en ligne de façon sûre, reproductible et sauvegardée.
 
 ## Tests
 - Pipeline CI vert sur la branche principale.
+
+## Notes de réalisation (2026-10-05)
+
+- Prêt : `docker-compose.prod.yml`, `.env.production.example`, procédure dans le README, intégration continue `.github/workflows/tests.yml` (Pint + tests SQLite et PostgreSQL).
+- Reste : choisir le domaine (Q2) et l'hébergement (Q3), configurer le SMTP de production, mettre en place la sauvegarde automatique.

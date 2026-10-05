@@ -70,3 +70,8 @@ test('the contact form is rate limited', function () {
 
     expect(Message::query()->count())->toBe(3);
 });
+
+test('validation messages are written in French', function () {
+    $this->post(route('contact.store'), contactPayload(['name' => '']))
+        ->assertSessionHasErrors(['name' => 'Le champ nom est obligatoire.']);
+});

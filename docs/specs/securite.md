@@ -21,7 +21,7 @@
 
 ## En-têtes et configuration
 - HTTPS obligatoire en production, `SESSION_SECURE_COOKIE=true`, HSTS.
-- En-têtes : `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options: DENY`, politique CSP de base.
+- En-têtes : `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options: DENY`, `Permissions-Policy`, HSTS en HTTPS (middleware `SecurityHeaders` et Caddy). La politique CSP est reportée en V2 (Livewire et Alpine demandent un réglage spécifique).
 - `APP_DEBUG=false` en production ; secrets uniquement dans `.env`, jamais versionnés.
 
 ## Données personnelles

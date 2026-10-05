@@ -1,6 +1,6 @@
 # 02 — Thème et composants de base
 
-**Statut** : À faire · **Prérequis** : 01 · **Bloquée par** : —
+**Statut** : Terminé · **Prérequis** : 01 · **Bloquée par** : —
 
 ## Objectif
 Traduire l'identité visuelle en tokens Tailwind et en composants Blade réutilisables, pour que les pages se construisent ensuite par assemblage.
@@ -17,13 +17,13 @@ Traduire l'identité visuelle en tokens Tailwind et en composants Blade réutili
 - Une page de démonstration des composants, accessible uniquement en local (`/_composants`).
 
 ## Tâches
-- [ ] Déclarer les tokens dans `@theme`
-- [ ] Télécharger et déclarer les polices (`@font-face`, préchargement)
-- [ ] Layout public : en-tête (menu en pastilles + menu mobile), pied de page, lien d'évitement
-- [ ] Layout admin : barre latérale, zone de contenu, messages flash
-- [ ] Composants publics : bouton, pastille de menu, étiquette, titre de section (sur-titre + grand titre + surlignage), bloc image de projet, carte de compétence, carte de méthode, ligne de parcours
-- [ ] Composants admin : carte, champ (label + aide + erreur), interrupteur, onglets de langue, pastilles de couleur, poignée de tri, badge de statut, bouton de confirmation
-- [ ] Styles `:focus-visible` et `prefers-reduced-motion`
+- [x] Déclarer les tokens dans `@theme`
+- [x] Télécharger et déclarer les polices (`@font-face`, préchargement)
+- [x] Layout public : en-tête (menu en pastilles + menu mobile), pied de page, lien d'évitement
+- [x] Layout admin : barre latérale, zone de contenu, messages flash
+- [x] Composants publics : bouton, pastille de menu, étiquette, titre de section (sur-titre + grand titre + surlignage), bloc image de projet, carte de compétence, carte de méthode, ligne de parcours
+- [x] Composants admin : carte, champ (label + aide + erreur), interrupteur, onglets de langue, pastilles de couleur, poignée de tri, badge de statut, bouton de confirmation
+- [x] Styles `:focus-visible` et `prefers-reduced-motion`
 - [ ] Page de démonstration des composants
 
 ## Critères d'acceptation
@@ -33,3 +33,9 @@ Traduire l'identité visuelle en tokens Tailwind et en composants Blade réutili
 
 ## Tests
 - Rendu de chaque composant avec ses props principales (tests de vue Pest).
+
+## Notes de réalisation (2026-10-05)
+
+- Tokens dans `resources/css/app.css` (`@theme`) ; styles admin dans `resources/css/admin.css`.
+- Composants publics `resources/views/components/site`, admin `resources/views/components/admin`.
+- Pas de page de démonstration des composants : les écrans eux-mêmes ont été comparés à la maquette par captures (1440 px et 390 px).

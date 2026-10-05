@@ -1,6 +1,6 @@
 # 07 — Admin : authentification et mise en page
 
-**Statut** : À faire · **Prérequis** : 02, 03 · **Bloquée par** : Q1 (Livewire)
+**Statut** : Terminé · **Prérequis** : 02, 03 · **Bloquée par** : Q1 (Livewire)
 
 ## Objectif
 Sécuriser l'accès à l'administration et poser la mise en page commune à tous ses écrans.
@@ -16,14 +16,14 @@ Sécuriser l'accès à l'administration et poser la mise en page commune à tous
 - Layout admin finalisé (badge des messages non lus).
 
 ## Tâches
-- [ ] Routes et redirection des invités vers `/admin/connexion`
-- [ ] Écran de connexion conforme à la maquette
-- [ ] Limitation des tentatives (5 / 15 min par e-mail + IP)
-- [ ] « Rester connecté »
-- [ ] Mot de passe oublié et réinitialisation (e-mails en français)
-- [ ] Mise à jour de `last_login_at`
-- [ ] Déconnexion (POST) avec invalidation de session
-- [ ] Barre latérale avec élément actif et compteur de messages non lus
+- [x] Routes et redirection des invités vers `/admin/connexion`
+- [x] Écran de connexion conforme à la maquette
+- [x] Limitation des tentatives (5 / 15 min par e-mail + IP)
+- [x] « Rester connecté »
+- [x] Mot de passe oublié et réinitialisation (e-mails en français)
+- [x] Mise à jour de `last_login_at`
+- [x] Déconnexion (POST) avec invalidation de session
+- [x] Barre latérale avec élément actif et compteur de messages non lus
 
 ## Critères d'acceptation
 - Aucune page `/admin/*` n'est accessible sans connexion.
@@ -32,3 +32,9 @@ Sécuriser l'accès à l'administration et poser la mise en page commune à tous
 
 ## Tests
 - Invité redirigé ; connexion valide ; mauvais mot de passe ; blocage au 6ᵉ essai ; déconnexion ; réinitialisation.
+
+## Notes de réalisation (2026-10-05)
+
+- Routes dans `routes/admin.php`, chargées avec le préfixe `/admin`.
+- E-mail de réinitialisation en français.
+- Le mot de passe se change aussi dans Paramètres.

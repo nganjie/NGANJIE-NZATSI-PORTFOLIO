@@ -6,14 +6,14 @@
 |---|---|---|
 | Langage / framework | PHP 8.3+, Laravel 13 | D01 |
 | Vues publiques | Blade + composants Blade, Tailwind CSS 4 via Vite | D03 |
-| Administration | Blade + Livewire + Alpine.js | D02, D04 |
+| Administration | Livewire 4 (Alpine.js inclus) + Trix | D02, D04, D12 |
 | Base de données | PostgreSQL 16+ | D05 |
 | Traductions | `spatie/laravel-translatable` | D07 |
 | Médias | `spatie/laravel-medialibrary` | D08 |
 | E-mails | Mailables Laravel, file d'attente `database` ; Mailpit en local | — |
 | Tests | Pest 4, SQLite en mémoire | D09 |
 | Style de code | Laravel Pint | D09 |
-| Environnement | Docker Compose | D06 |
+| Environnement | Docker Compose, Caddy | D06, D13 |
 | Outillage IA | Laravel Boost | D11 |
 
 ## Organisation du code
@@ -27,12 +27,13 @@ app/
       Admin/             AuthController (connexion, mot de passe oublié)
     Middleware/          (si besoin)
     Requests/            ContactRequest, …
-  Livewire/Admin/        Dashboard, Profile, Projects/Index, Projects/Edit, Skills, Technologies,
-                         Experiences, ProcessSteps, Messages, Media, Settings
+  Livewire/Admin/        Dashboard, ProfileForm, Projects/ProjectIndex, Projects/ProjectForm, Skills,
+                         Technologies, Experiences, ProcessSteps, Messages, MediaLibrary, SettingsForm
+  Livewire/Admin/Concerns/ OrderedCrud, ManagesOrderedList, EditsTranslations
   Mail/                  NewContactMessage
   Models/                User, Profile, Project, ProjectTask, Technology, SkillDomain,
                          Experience, ProcessStep, Message, Setting, PageView
-  Support/               Settings (lecture en cache des paramètres)
+  Support/               Settings, RichText (nettoyage HTML), MediaUploader, PageViewRecorder, Lines
 resources/
   css/app.css            tokens du thème (@theme Tailwind)
   views/
@@ -56,11 +57,12 @@ routes/
 | POST | `/contact` | `contact.store` | Public, limité en débit |
 | GET | `/cv` | `cv.download` | Public (compte les téléchargements) |
 | GET | `/sitemap.xml` | `sitemap` | Public |
+| GET | `/robots.txt` | `robots` | Public (tout bloqué hors production) |
 | GET | `/admin/connexion` | `admin.login` | Invités |
 | POST | `/admin/connexion` | — | Invités, limité en débit |
 | GET/POST | `/admin/mot-de-passe-oublie`, `/admin/reinitialiser/{token}` | — | Invités |
 | GET | `/admin` | `admin.dashboard` | Authentifié |
-| GET | `/admin/profil`, `/admin/projets`, `/admin/projets/creer`, `/admin/projets/{project}`, `/admin/competences`, `/admin/technologies`, `/admin/parcours`, `/admin/methode`, `/admin/messages`, `/admin/medias`, `/admin/parametres` | `admin.*` | Authentifié |
+| GET | `/admin/profil`, `/admin/projets`, `/admin/projets/creer`, `/admin/projets/{slug}/modifier`, `/admin/competences`, `/admin/technologies`, `/admin/parcours`, `/admin/methode`, `/admin/messages`, `/admin/medias`, `/admin/parametres` | `admin.*` | Authentifié |
 
 Les URL publiques sont en français ; un préfixe de langue (`/en/...`) sera ajouté en V2 (voir [bilingue.md](bilingue.md)).
 
