@@ -1,0 +1,37 @@
+{
+  "v": 3,
+  "createdOnFiles": {"v": 1, "at": "2026-10-05T21:30:00Z"},
+  "title": "Maquette portfolio Nganjie v3",
+  "launch": {"view": "canvas", "page": "public"},
+  "pages": [
+    {"id": "public", "name": "Site public"},
+    {"id": "admin", "name": "Administration"}
+  ],
+  "boards": {
+    "Main.dc.html": {"x": 0, "y": 0, "w": 1440, "h": 6200, "title": "Accueil", "page": "public", "expand": "fill", "is_interactive": true},
+    "Projets.dc.html": {"x": 1520, "y": 0, "w": 1440, "h": 2300, "title": "Liste des projets", "page": "public", "expand": "fill", "is_interactive": true},
+    "Projet.dc.html": {"x": 3040, "y": 0, "w": 1440, "h": 4300, "title": "Détail d'un projet", "page": "public", "expand": "fill", "is_interactive": true},
+    "Mobile.dc.html": {"x": 4560, "y": 0, "w": 390, "h": 3400, "title": "Accueil mobile", "page": "public", "is_interactive": true},
+    "AdminConnexion.dc.html": {"x": 0, "y": 0, "w": 1440, "h": 900, "title": "Connexion", "page": "admin", "expand": "fill", "is_interactive": true},
+    "AdminTableau.dc.html": {"x": 1520, "y": 0, "w": 1440, "h": 1100, "title": "Tableau de bord", "page": "admin", "expand": "fill", "is_interactive": true},
+    "AdminProjets.dc.html": {"x": 3040, "y": 0, "w": 1440, "h": 1100, "title": "Projets", "page": "admin", "expand": "fill", "is_interactive": true},
+    "AdminProjet.dc.html": {"x": 4560, "y": 0, "w": 1440, "h": 1900, "title": "Édition d'un projet", "page": "admin", "expand": "fill", "is_interactive": true},
+    "AdminMessages.dc.html": {"x": 6080, "y": 0, "w": 1440, "h": 1000, "title": "Messages", "page": "admin", "expand": "fill", "is_interactive": true}
+  },
+  "order": [
+    "Main.dc.html",
+    "Projets.dc.html",
+    "Projet.dc.html",
+    "Mobile.dc.html",
+    "AdminConnexion.dc.html",
+    "AdminTableau.dc.html",
+    "AdminProjets.dc.html",
+    "AdminProjet.dc.html",
+    "AdminMessages.dc.html"
+  ],
+  "notes": {
+    "titrePublic": {"x": 0, "y": -300, "text": "Site public", "kind": "title1", "maxW": 4950, "page": "public"},
+    "titreAdmin": {"x": 0, "y": -300, "text": "Administration", "kind": "title1", "maxW": 7520, "page": "admin"}
+  },
+  "designSystems": []
+}

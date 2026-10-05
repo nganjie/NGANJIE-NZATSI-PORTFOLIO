@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Accueil mobile — Nganjie Nzatsi</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&amp;family=Schibsted+Grotesk:wght@600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#FAFAF7}
+a{color:#0E0E10}a:hover{color:#6A1BF0}
+.btn{display:flex;align-items:center;justify-content:center;min-height:56px;padding:0 24px;border-radius:999px;font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none}
+</style>
+</helmet>
+<div style="width: 390px; height: 3400px; overflow: hidden; position: relative; font-family: 'Figtree', sans-serif; font-size: 16px; line-height: 1.6; color: #0E0E10; background: #FAFAF7">
+<div aria-hidden="true" style="position: absolute; width: 260px; height: 260px; border-radius: 50%; background: #A6F20A; top: -110px; right: -110px"></div>
+
+<header style="position: relative; display: flex; align-items: center; justify-content: space-between; padding: 20px 16px">
+<a href="Mobile.dc.html" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: #0E0E10">
+<span aria-hidden="true" style="width: 26px; height: 26px; border-radius: 8px; background: #6A1BF0; transform: rotate(-8deg)"></span>
+<span style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -0.03em">nganjie<span style="color: #6A1BF0">.</span></span>
+</a>
+<button type="button" onClick="{{basculer}}" aria-expanded="{{ouvertTxt}}" aria-label="Ouvrir le menu" style="width: 48px; height: 48px; border-radius: 50%; border: 0; background: #0E0E10; color: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"></path></svg>
+</button>
+</header>
+
+<sc-if value="{{ouvert}}" hint-placeholder-val="{{ false }}">
+<nav aria-label="Menu" style="position: absolute; top: 88px; left: 16px; right: 16px; z-index: 5; background: #0E0E10; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<a href="#" style="color: #FFFFFF; text-decoration: none; padding: 14px 16px; border-radius: 12px; background: #2A2A30; font-weight: 600">Projets</a>
+<a href="#" style="color: #FFFFFF; text-decoration: none; padding: 14px 16px; border-radius: 12px; background: #2A2A30; font-weight: 600">Compétences</a>
+<a href="#" style="color: #FFFFFF; text-decoration: none; padding: 14px 16px; border-radius: 12px; background: #2A2A30; font-weight: 600">Parcours</a>
+<a href="#" style="color: #FFFFFF; text-decoration: none; padding: 14px 16px; border-radius: 12px; background: #2A2A30; font-weight: 600">Méthode</a>
+<a href="#" style="color: #0E0E10; text-decoration: none; padding: 14px 16px; border-radius: 12px; background: #A6F20A; font-weight: 700">Contact</a>
+</nav>
+</sc-if>
+
+<section style="position: relative; padding: 24px 16px 56px">
+<div style="width: 132px; height: 132px; border-radius: 50%; background: #DCCBFF; display: flex; align-items: center; justify-content: center; color: #4A1AA8; font-weight: 600; font-size: 12px; margin-bottom: 24px">[VOTRE PHOTO]</div>
+<h1 style="margin: 0; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 46px; line-height: 0.98; letter-spacing: -0.03em; text-transform: uppercase">Je transforme vos idées en applications <span style="background: #A6F20A; border-radius: 10px; padding: 0 8px; display: inline-block; margin-top: 6px">qui tournent</span></h1>
+<p style="margin: 28px 0 12px; display: flex; align-items: center; gap: 8px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .04em; text-transform: uppercase"><span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #3FA60A"></span>Disponible pour un stage ou un emploi</p>
+<p style="margin: 0 0 24px; font-size: 17px; color: #2A2A30">Développeur full stack à Douala. Je conçois des applications web et fintech de bout en bout avec C# .NET, Angular et Laravel.</p>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<a class="btn" href="#" style="background: #A6F20A; color: #0E0E10">Découvrir mes projets</a>
+<a class="btn" href="#" style="background: #0E0E10; color: #FFFFFF">Me recruter</a>
+</div>
+<div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 24px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .04em; text-transform: uppercase">
+<a href="#">GitHub ↗</a><a href="#">LinkedIn ↗</a><a href="#">WhatsApp ↗</a><a href="#">CV (PDF) ↓</a>
+</div>
+</section>
+
+<section style="padding: 48px 16px; border-top: 1px solid #DEDDD8">
+<h2 style="margin: 0 0 28px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 34px; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase">Dans les coulisses de mes projets</h2>
+<a href="#" style="display: block; text-decoration: none; color: #0E0E10; margin-bottom: 32px">
+<div style="background: #6A1BF0; border-radius: 6px; height: 210px; padding: 10px; box-sizing: border-box"><div style="border: 1px solid rgba(255,255,255,.45); border-radius: 3px; height: 100%; display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-size: 12px; font-weight: 600">[CAPTURE D'ÉCRAN]</div></div>
+<h3 style="margin: 16px 0 6px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.15">SmartSchools, SaaS de gestion scolaire</h3>
+<p style="margin: 0; color: #55545A; font-size: 15px">SIGP SC Cameroun · C# .NET · Angular</p>
+</a>
+<a href="#" style="display: block; text-decoration: none; color: #0E0E10; margin-bottom: 32px">
+<div style="background: #0B1533; border-radius: 6px; height: 210px; padding: 10px; box-sizing: border-box"><div style="border: 1px solid rgba(255,255,255,.3); border-radius: 3px; height: 100%; display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-size: 12px; font-weight: 600">[CAPTURE D'ÉCRAN]</div></div>
+<h3 style="margin: 16px 0 6px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.15">Plateforme de paris sportifs en temps réel</h3>
+<p style="margin: 0; color: #55545A; font-size: 15px">SIGP SC Cameroun · C# .NET · Angular · WebSocket</p>
+</a>
+<a class="btn" href="Projets.dc.html" style="background: #A6F20A; color: #0E0E10">Voir tous les projets</a>
+</section>
+
+<section style="background: #0E0E10; color: #FFFFFF; padding: 56px 16px">
+<h2 style="margin: 0 0 28px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 34px; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase">Compétences</h2>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="border: 1px solid #2A2A30; border-radius: 16px; padding: 20px"><h3 style="margin: 0 0 8px; font-family: 'Schibsted Grotesk', sans-serif; font-size: 19px">API et backend</h3><p style="margin: 0; color: #B9B8C2; font-size: 14px">C# .NET · Laravel · API REST · PostgreSQL · MySQL</p></div>
+<div style="border: 1px solid #2A2A30; border-radius: 16px; padding: 20px"><h3 style="margin: 0 0 8px; font-family: 'Schibsted Grotesk', sans-serif; font-size: 19px">Interfaces web</h3><p style="margin: 0; color: #B9B8C2; font-size: 14px">Angular · TypeScript · HTML &amp; CSS · .NET MAUI</p></div>
+<div style="border: 1px solid #2A2A30; border-radius: 16px; padding: 20px"><h3 style="margin: 0 0 8px; font-family: 'Schibsted Grotesk', sans-serif; font-size: 19px">Temps réel et fintech</h3><p style="margin: 0; color: #B9B8C2; font-size: 14px">WebSocket · Paiement · Wallets</p></div>
+<div style="border: 1px solid #2A2A30; border-radius: 16px; padding: 20px"><h3 style="margin: 0 0 8px; font-family: 'Schibsted Grotesk', sans-serif; font-size: 19px">Déploiement et accompagnement</h3><p style="margin: 0; color: #B9B8C2; font-size: 14px">Docker · Git · Cloudflare · Documentation</p></div>
+</div>
+</section>
+
+<section style="padding: 56px 0">
+<h2 style="margin: 0 16px 24px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 34px; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase">Parcours</h2>
+<div style="background: #6A1BF0; color: #FFFFFF; padding: 24px 16px">
+<p style="margin: 0 0 4px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 13px">Août 2024 → aujourd'hui · Poste actuel</p>
+<h3 style="margin: 0; font-family: 'Schibsted Grotesk', sans-serif; font-size: 20px; line-height: 1.2">Développeur full stack en alternance</h3>
+<p style="margin: 4px 0 0; color: #E4DAFF; font-size: 15px">SIGP SC Cameroun</p>
+</div>
+<div style="padding: 24px 16px; border-bottom: 1px solid #DEDDD8">
+<p style="margin: 0 0 4px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 13px">[ANNÉES]</p>
+<h3 style="margin: 0; font-family: 'Schibsted Grotesk', sans-serif; font-size: 20px; line-height: 1.2">Cycle ingénieur, génie logiciel</h3>
+<p style="margin: 4px 0 0; color: #55545A; font-size: 15px">ENSPD</p>
+</div>
+</section>
+
+<section style="background: #EFEEEA; padding: 56px 16px">
+<h2 style="margin: 0 0 24px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 34px; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase">Parlons de votre projet</h2>
+<form style="background: #FFFFFF; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<label for="m-type" style="font-weight: 600; font-size: 14px">Type de demande</label>
+<select id="m-type" style="font: inherit; padding: 14px; border: 1px solid #DEDDD8; border-radius: 12px; background: #FAFAF7"><option>Offre d'emploi ou de stage</option></select>
+<label for="m-nom" style="font-weight: 600; font-size: 14px">Nom</label>
+<input id="m-nom" type="text" style="font: inherit; padding: 14px; border: 1px solid #DEDDD8; border-radius: 12px; background: #FAFAF7">
+<label for="m-mail" style="font-weight: 600; font-size: 14px">E-mail</label>
+<input id="m-mail" type="email" style="font: inherit; padding: 14px; border: 1px solid #DEDDD8; border-radius: 12px; background: #FAFAF7">
+<label for="m-msg" style="font-weight: 600; font-size: 14px">Message</label>
+<textarea id="m-msg" rows="4" style="font: inherit; padding: 14px; border: 1px solid #DEDDD8; border-radius: 12px; background: #FAFAF7"></textarea>
+<button type="button" class="btn" style="background: #0E0E10; color: #FFFFFF; border: 0">Envoyer le message</button>
+</form>
+</section>
+
+<footer style="background: #17171A; color: #B9B8C2; padding: 32px 16px; font-size: 14px; display: flex; justify-content: space-between">
+<span>© 2026 Nganjie Nzatsi</span>
+<a href="AdminConnexion.dc.html" style="color: #8E8D97">Administration</a>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":3400}}'>
+class Component extends DCLogic {
+constructor(props) { super(props); this.state = { ouvert: false }; }
+renderVals() {
+const ouvert = this.state.ouvert;
+return { ouvert, ouvertTxt: ouvert ? 'true' : 'false', basculer: () => this.setState({ ouvert: !ouvert }) };
+}
+}
+</script>
+</body>
+</html>

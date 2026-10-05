@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>SmartSchools — étude de cas</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&amp;family=Schibsted+Grotesk:wght@600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#FAFAF7}
+a{color:#0E0E10}a:hover{color:#6A1BF0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.narrow{max-width:820px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.navpill{background:#EFEEEA;color:#0E0E10;text-decoration:none;padding:10px 18px;border-radius:999px;font-size:15px;font-weight:500}
+.navpill:hover{background:#A6F20A;color:#0E0E10}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 34px;border-radius:999px;font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;transition:transform .2s}
+.btn:hover{transform:translateY(-4px)}
+.lift{transition:transform .2s}.lift:hover{transform:translateY(-4px)}
+.fiches{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.galerie{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+@media (max-width:900px){.fiches{grid-template-columns:repeat(2,minmax(0,1fr))}.galerie,.g2{grid-template-columns:1fr}.hidem{display:none}.big{font-size:52px !important}}
+</style>
+</helmet>
+<div style="font-family: 'Figtree', sans-serif; font-size: 17px; line-height: 1.6; color: #0E0E10; background: #FAFAF7; overflow: hidden">
+
+<header class="wrap" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding-top: 28px; padding-bottom: 28px">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #0E0E10">
+<span aria-hidden="true" style="width: 32px; height: 32px; border-radius: 10px; background: #6A1BF0; transform: rotate(-8deg)"></span>
+<span style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: -0.03em">nganjie<span style="color: #6A1BF0">.</span></span>
+</a>
+<nav aria-label="Navigation principale" class="hidem" style="display: flex; gap: 8px; flex-wrap: wrap">
+<a class="navpill" href="Projets.dc.html" style="background: #A6F20A">Projets</a>
+<a class="navpill" href="Main.dc.html">Compétences</a>
+<a class="navpill" href="Main.dc.html">Parcours</a>
+<a class="navpill" href="Main.dc.html">Méthode</a>
+<a class="navpill" href="Main.dc.html">Contact</a>
+</nav>
+<a href="mailto:nganjienzatsi@gmail.com" style="background: #6A1BF0; color: #FFFFFF; text-decoration: none; padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 15px">nganjienzatsi@gmail.com</a>
+</header>
+
+<!-- EN-TÊTE DU PROJET -->
+<section class="wrap" style="padding-top: 56px; padding-bottom: 56px">
+<p style="margin: 0 0 24px; font-size: 15px; color: #55545A"><a href="Main.dc.html" style="color: #55545A">Accueil</a> / <a href="Projets.dc.html" style="color: #55545A">Projets</a> / SmartSchools</p>
+<ul style="list-style: none; margin: 0 0 24px; padding: 0; display: flex; gap: 8px; flex-wrap: wrap">
+<li style="background: #6A1BF0; color: #FFFFFF; border-radius: 999px; padding: 6px 14px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .04em; text-transform: uppercase">Professionnel</li>
+<li style="background: #EFEEEA; border-radius: 999px; padding: 6px 14px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .04em; text-transform: uppercase">SaaS</li>
+<li style="background: #EFEEEA; border-radius: 999px; padding: 6px 14px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .04em; text-transform: uppercase">Éducation</li>
+</ul>
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap">
+<div style="max-width: 820px">
+<h1 class="big" style="margin: 0 0 24px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 96px; line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase">Smart<span style="background: #A6F20A; border-radius: 12px; padding: 0 10px">Schools</span></h1>
+<p style="margin: 0; font-size: 21px; line-height: 1.5; color: #2A2A30">Un SaaS de gestion des établissements scolaires, utilisé au quotidien par les équipes administratives. J'y développe des fonctionnalités, je teste, je documente et je forme les utilisateurs.</p>
+</div>
+<a class="btn" href="#" style="background: #0E0E10; color: #FFFFFF">Voir le site en ligne ↗</a>
+</div>
+</section>
+
+<!-- CAPTURE PRINCIPALE -->
+<section class="wrap">
+<div style="background: #6A1BF0; border-radius: 6px; height: 600px; padding: 14px; box-sizing: border-box">
+<div style="border: 1px solid rgba(255,255,255,.45); border-radius: 3px; height: 100%; display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-weight: 600; font-size: 14px">[CAPTURE PRINCIPALE — à valider avec SIGP SC]</div>
+</div>
+</section>
+
+<!-- FICHES -->
+<section class="wrap" style="padding-top: 40px; padding-bottom: 96px">
+<dl class="fiches" style="margin: 0">
+<div style="border: 1px solid #DEDDD8; border-radius: 16px; padding: 24px">
+<dt style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: #55545A; margin-bottom: 8px">Rôle</dt>
+<dd style="margin: 0; font-weight: 600">Développeur full stack</dd>
+</div>
+<div style="border: 1px solid #DEDDD8; border-radius: 16px; padding: 24px">
+<dt style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: #55545A; margin-bottom: 8px">Contexte</dt>
+<dd style="margin: 0; font-weight: 600">SIGP SC Cameroun, en équipe</dd>
+</div>
+<div style="border: 1px solid #DEDDD8; border-radius: 16px; padding: 24px">
+<dt style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: #55545A; margin-bottom: 8px">Stack</dt>
+<dd style="margin: 0; font-weight: 600">C# .NET · Angular</dd>
+</div>
+<div style="border: 1px solid #DEDDD8; border-radius: 16px; padding: 24px">
+<dt style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: #55545A; margin-bottom: 8px">Période</dt>
+<dd style="margin: 0; font-weight: 600">Depuis août 2024</dd>
+</div>
+</dl>
+</section>
+
+<!-- CONTEXTE -->
+<section class="narrow" style="padding-bottom: 96px">
+<p style="margin: 0 0 12px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: #6A1BF0">Le contexte</p>
+<h2 style="margin: 0 0 24px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 48px; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase">Un outil au cœur de la vie de l'école</h2>
+<p style="margin: 0; color: #2A2A30">SmartSchools centralise la gestion d'un établissement scolaire, de la scolarité à la trésorerie. Le produit évolue en continu : chaque nouvelle fonctionnalité doit s'intégrer sans perturber les équipes qui l'utilisent tous les jours.</p>
+</section>
+
+<!-- CE QUE J'AI FAIT -->
+<section style="background: #0E0E10; color: #FFFFFF; padding: 112px 0">
+<div class="wrap">
+<p style="margin: 0 0 12px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: #A6F20A">Ce que j'ai fait</p>
+<h2 style="margin: 0 0 56px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 56px; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase">Mes réalisations</h2>
+<ol style="list-style: none; margin: 0; padding: 0">
+<sc-for list="{{taches}}" as="t" hint-placeholder-count="4">
+<li style="display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: 24px; padding: 32px 0; border-top: 1px solid #2A2A30">
+<span style="display: inline-flex; width: 48px; height: 48px; border-radius: 50%; background: #A6F20A; color: #0E0E10; align-items: center; justify-content: center; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800">{{t.num}}</span>
+<div>
+<h3 style="margin: 0 0 8px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 26px">{{t.titre}}</h3>
+<p style="margin: 0; color: #B9B8C2; max-width: 720px">{{t.texte}}</p>
+</div>
+</li>
+</sc-for>
+</ol>
+</div>
+</section>
+
+<!-- GALERIE -->
+<section class="wrap" style="padding-top: 112px; padding-bottom: 96px">
+<p style="margin: 0 0 12px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: #6A1BF0">Galerie</p>
+<h2 style="margin: 0 0 40px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 48px; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase">En images</h2>
+<div class="galerie">
+<figure style="margin: 0">
+<div style="background: #DCCBFF; border-radius: 6px; height: 340px; padding: 14px; box-sizing: border-box"><div style="border: 1px solid rgba(14,14,16,.3); border-radius: 3px; height: 100%; display: flex; align-items: center; justify-content: center; color: #2A1466; font-size: 13px; font-weight: 600">[CAPTURE 1]</div></div>
+<figcaption style="margin-top: 12px; font-size: 15px; color: #55545A">[Légende de la capture]</figcaption>
+</figure>
+<figure style="margin: 0">
+<div style="background: #0B1533; border-radius: 6px; height: 340px; padding: 14px; box-sizing: border-box"><div style="border: 1px solid rgba(255,255,255,.3); border-radius: 3px; height: 100%; display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-size: 13px; font-weight: 600">[CAPTURE 2]</div></div>
+<figcaption style="margin-top: 12px; font-size: 15px; color: #55545A">[Légende de la capture]</figcaption>
+</figure>
+</div>
+</section>
+
+<!-- ENSEIGNEMENT + RÉSULTATS -->
+<section class="wrap g2" style="padding-bottom: 112px">
+<blockquote style="margin: 0; background: #FFFFFF; border: 1px solid #0E0E10; border-radius: 16px; padding: 40px; transform: rotate(-1.5deg)">
+<p style="margin: 0 0 16px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: #6A1BF0">Ce que j'en retiens</p>
+<p style="margin: 0; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 28px; line-height: 1.25">« [ENSEIGNEMENT RETENU — une phrase sur ce que ce projet t'a appris] »</p>
+</blockquote>
+<div style="background: #A6F20A; border-radius: 16px; padding: 40px">
+<p style="margin: 0 0 16px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .04em; text-transform: uppercase">Résultats</p>
+<ul style="margin: 0; padding-left: 20px; font-size: 18px; display: flex; flex-direction: column; gap: 10px">
+<li>[RÉSULTAT 1 — à confirmer avec SIGP SC]</li>
+<li>[RÉSULTAT 2]</li>
+<li>[RÉSULTAT 3]</li>
+</ul>
+</div>
+</section>
+
+<!-- PROJET SUIVANT -->
+<a href="Projet.dc.html" style="display: block; background: #6A1BF0; color: #FFFFFF; text-decoration: none; padding: 80px 0">
+<div class="wrap" style="display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap">
+<div>
+<p style="margin: 0 0 8px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: #E4DAFF">Projet suivant</p>
+<p style="margin: 0; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 56px; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase">Paris sportifs en temps réel</p>
+</div>
+<span aria-hidden="true" style="width: 88px; height: 88px; border-radius: 50%; background: #A6F20A; color: #0E0E10; display: flex; align-items: center; justify-content: center; font-size: 36px">→</span>
+</div>
+</a>
+
+<footer style="background: #17171A; color: #B9B8C2; padding: 40px 0">
+<div class="wrap" style="display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 14px">
+<span>© 2026 Nganjie Nzatsi — Douala, Cameroun</span>
+<a href="AdminConnexion.dc.html" style="color: #8E8D97">Administration</a>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4300}}'>
+class Component extends DCLogic {
+renderVals() {
+return {
+taches: [
+{ num: '01', titre: 'Développement de fonctionnalités', texte: 'Ajout de nouveaux écrans et services côté API .NET et interface Angular, dans le respect de l’existant.' },
+{ num: '02', titre: 'Tests et corrections', texte: 'Recette des évolutions, reproduction et correction des anomalies remontées par les établissements.' },
+{ num: '03', titre: 'Documentation', texte: 'Rédaction des guides d’utilisation pour les équipes des établissements.' },
+{ num: '04', titre: 'Formation et vidéo Trésorerie', texte: 'Formation des utilisateurs et écriture du script d’une vidéo de présentation du module Trésorerie.' }
+]
+};
+}
+}
+</script>
+</body>
+</html>

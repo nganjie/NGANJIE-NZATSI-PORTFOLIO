@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Projets — Nganjie Nzatsi</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&amp;family=Schibsted+Grotesk:wght@600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#FAFAF7}
+a{color:#0E0E10}a:hover{color:#6A1BF0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.navpill{background:#EFEEEA;color:#0E0E10;text-decoration:none;padding:10px 18px;border-radius:999px;font-size:15px;font-weight:500}
+.navpill:hover{background:#A6F20A;color:#0E0E10}
+.lift{transition:transform .2s}.lift:hover{transform:translateY(-4px)}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 24px}
+.filtre{min-height:44px;padding:0 20px;border-radius:999px;font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;cursor:pointer}
+@media (max-width:900px){.g3{grid-template-columns:repeat(2,minmax(0,1fr))}.hidem{display:none}.big{font-size:56px !important}}
+@media (max-width:600px){.g3{grid-template-columns:1fr}}
+</style>
+</helmet>
+<div style="font-family: 'Figtree', sans-serif; font-size: 17px; line-height: 1.6; color: #0E0E10; background: #FAFAF7; overflow: hidden">
+
+<header class="wrap" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding-top: 28px; padding-bottom: 28px">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #0E0E10">
+<span aria-hidden="true" style="width: 32px; height: 32px; border-radius: 10px; background: #6A1BF0; transform: rotate(-8deg)"></span>
+<span style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: -0.03em">nganjie<span style="color: #6A1BF0">.</span></span>
+</a>
+<nav aria-label="Navigation principale" class="hidem" style="display: flex; gap: 8px; flex-wrap: wrap">
+<a class="navpill" href="Projets.dc.html" style="background: #A6F20A">Projets</a>
+<a class="navpill" href="Main.dc.html">Compétences</a>
+<a class="navpill" href="Main.dc.html">Parcours</a>
+<a class="navpill" href="Main.dc.html">Méthode</a>
+<a class="navpill" href="Main.dc.html">Contact</a>
+</nav>
+<a href="mailto:nganjienzatsi@gmail.com" style="background: #6A1BF0; color: #FFFFFF; text-decoration: none; padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 15px">nganjienzatsi@gmail.com</a>
+</header>
+
+<section class="wrap" style="padding-top: 72px; padding-bottom: 56px; position: relative">
+<div aria-hidden="true" style="position: absolute; width: 220px; height: 84px; border-radius: 999px; background: #A6F20A; top: 40px; right: 24px; transform: rotate(-14deg)"></div>
+<p style="margin: 0 0 16px; font-size: 15px; color: #55545A"><a href="Main.dc.html" style="color: #55545A">Accueil</a> / Projets</p>
+<h1 class="big" style="margin: 0; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 96px; line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; position: relative">Tous mes projets</h1>
+<p style="margin: 24px 0 0; max-width: 560px; color: #55545A; font-size: 19px">Applications professionnelles en production, projets personnels et travaux de conception.</p>
+</section>
+
+<section class="wrap" style="padding-bottom: 120px">
+<div role="group" aria-label="Filtrer par type" style="display: flex; gap: 10px; flex-wrap: wrap; padding-bottom: 32px; margin-bottom: 40px; border-bottom: 1px solid #DEDDD8">
+<sc-for list="{{filtres}}" as="f" hint-placeholder-count="4">
+<button type="button" class="filtre" onClick="{{f.pick}}" aria-pressed="{{f.actif}}" style="background: {{f.bg}}; color: {{f.fg}}; border: 1px solid {{f.bord}}">{{f.label}} <span style="opacity: .6; margin-left: 4px">{{f.nb}}</span></button>
+</sc-for>
+</div>
+
+<div class="g3">
+<sc-for list="{{visibles}}" as="p" hint-placeholder-count="6">
+<a href="Projet.dc.html" class="lift" style="text-decoration: none; color: #0E0E10; display: flex; flex-direction: column; gap: 18px">
+<div style="background: {{p.bg}}; border-radius: 6px; height: 260px; padding: 14px; box-sizing: border-box">
+<div style="border: 1px solid {{p.ligne}}; color: {{p.fg}}; border-radius: 3px; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600">[CAPTURE D'ÉCRAN]</div>
+</div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap">
+<span style="background: #EFEEEA; border-radius: 999px; padding: 4px 12px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .04em; text-transform: uppercase">{{p.type}}</span>
+</div>
+<h2 style="margin: 0; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 26px; line-height: 1.15; letter-spacing: -0.02em">{{p.titre}}</h2>
+<p style="margin: 0; color: #55545A; font-size: 16px">{{p.resume}}</p>
+<p style="margin: 0; font-weight: 600; font-size: 15px">{{p.stack}}</p>
+</a>
+</sc-for>
+</div>
+</section>
+
+<footer style="background: #17171A; color: #B9B8C2; padding: 40px 0">
+<div class="wrap" style="display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 14px">
+<span>© 2026 Nganjie Nzatsi — Douala, Cameroun</span>
+<a href="AdminConnexion.dc.html" style="color: #8E8D97">Administration</a>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2300}}'>
+class Component extends DCLogic {
+constructor(props) { super(props); this.state = { filtre: 'tous' }; }
+renderVals() {
+const projets = [
+{ cle: 'pro', type: 'Professionnel', titre: 'SmartSchools', resume: 'SaaS de gestion des établissements scolaires : développement, tests, documentation et formation.', stack: 'C# .NET · Angular', bg: '#6A1BF0', ligne: 'rgba(255,255,255,.45)', fg: '#FFFFFF' },
+{ cle: 'pro', type: 'Professionnel', titre: 'Plateforme de paris sportifs', resume: 'Plateforme en production, en marque blanche, avec back-office, caisse et application mobile.', stack: 'C# .NET · Angular · WebSocket', bg: '#0B1533', ligne: 'rgba(255,255,255,.3)', fg: '#FFFFFF' },
+{ cle: 'perso', type: 'Personnel', titre: 'Plateforme SaaS hotspot', resume: 'Portail qui déploie un conteneur isolé par client, avec espace client et super-admin.', stack: 'Laravel · Angular · Docker', bg: '#A6F20A', ligne: 'rgba(14,14,16,.35)', fg: '#0E0E10' },
+{ cle: 'perso', type: 'Personnel', titre: 'Plugin revendeurs hotspot', resume: 'Wallet prépayé, commissions, routeurs et forfaits autorisés, données isolées par revendeur.', stack: 'PHP · HTML/CSS/JS', bg: '#DCCBFF', ligne: 'rgba(14,14,16,.3)', fg: '#2A1466' },
+{ cle: 'perso', type: 'Personnel', titre: 'Ancestri', resume: 'Arbre généalogique pour les marchés africains : mobile money, langues locales, hors ligne.', stack: 'Angular · .NET · PWA', bg: '#0E0E10', ligne: 'rgba(255,255,255,.3)', fg: '#FFFFFF' },
+{ cle: 'perso', type: 'Personnel', titre: 'Signalement des patients isolés', resume: 'Plateforme pour signaler les patients non identifiés, conçue autour de la protection des données.', stack: 'Conception', bg: '#EFEEEA', ligne: 'rgba(14,14,16,.25)', fg: '#0E0E10' }
+];
+const defs = [['tous', 'Tous'], ['pro', 'Professionnel'], ['perso', 'Personnel'], ['acad', 'Académique']];
+const f = this.state.filtre;
+return {
+filtres: defs.map(([cle, label]) => {
+const actif = f === cle;
+return { label, actif: actif ? 'true' : 'false', nb: cle === 'tous' ? projets.length : projets.filter(p => p.cle === cle).length,
+bg: actif ? '#0E0E10' : '#FAFAF7', fg: actif ? '#FFFFFF' : '#0E0E10', bord: actif ? '#0E0E10' : '#DEDDD8',
+pick: () => this.setState({ filtre: cle }) };
+}),
+visibles: f === 'tous' ? projets : projets.filter(p => p.cle === f)
+};
+}
+}
+</script>
+</body>
+</html>
