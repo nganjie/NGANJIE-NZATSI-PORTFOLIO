@@ -267,7 +267,13 @@ class ProjectForm extends Component
             return;
         }
 
-        $ids = $this->project->getMedia('gallery')->pluck('id')->reject(fn ($id) => (string) $id === (string) $item)->values()->all();
+        $galleryIds = $this->project->getMedia('gallery')->pluck('id');
+
+        if (! $galleryIds->contains((int) $item)) {
+            return;
+        }
+
+        $ids = $galleryIds->reject(fn ($id) => (string) $id === (string) $item)->values()->all();
         array_splice($ids, max(0, $position), 0, [(int) $item]);
         Media::setNewOrder($ids);
         $this->project->touch();

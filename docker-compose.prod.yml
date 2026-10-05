@@ -12,7 +12,7 @@ x-app: &app
     target: prod
   image: portfolio-app:latest
   restart: unless-stopped
-  env_file: ${ENV_FILE:-.env}
+  env_file: .env
   environment:
     DB_HOST: db
     DB_PORT: 5432
@@ -33,15 +33,21 @@ services:
 
   queue:
     <<: *app
-    command: php artisan queue:work --tries=3 --timeout=120 --max-time=3600
+    command: php artisan queue:work --tries=3 --timeout=75 --max-time=3600
     healthcheck:
       disable: true
+    depends_on:
+      app:
+        condition: service_healthy
 
   scheduler:
     <<: *app
     command: php artisan schedule:work
     healthcheck:
       disable: true
+    depends_on:
+      app:
+        condition: service_healthy
 
   web:
     build:

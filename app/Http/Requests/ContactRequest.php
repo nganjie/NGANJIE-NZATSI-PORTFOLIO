@@ -15,6 +15,11 @@ class ContactRequest extends FormRequest
      */
     public const MIN_SECONDS = 3;
 
+    /**
+     * Maximum age of the form token, in seconds.
+     */
+    public const MAX_SECONDS = 2 * 60 * 60;
+
     public function authorize(): bool
     {
         return true;
@@ -47,7 +52,7 @@ class ContactRequest extends FormRequest
     }
 
     /**
-     * Honeypot filled in, or form sent too quickly to be human.
+     * Honeypot filled in, or form sent too quickly to be human, or with an expired token.
      */
     public function isSpam(): bool
     {
@@ -61,7 +66,9 @@ class ContactRequest extends FormRequest
             return true;
         }
 
-        return now()->timestamp - $startedAt < self::MIN_SECONDS;
+        $elapsed = now()->timestamp - $startedAt;
+
+        return $elapsed < self::MIN_SECONDS || $elapsed > self::MAX_SECONDS;
     }
 
     protected function getRedirectUrl(): string

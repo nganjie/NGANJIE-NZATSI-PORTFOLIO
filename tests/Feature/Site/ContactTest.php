@@ -75,3 +75,17 @@ test('validation messages are written in French', function () {
     $this->post(route('contact.store'), contactPayload(['name' => '']))
         ->assertSessionHasErrors(['name' => 'Le champ nom est obligatoire.']);
 });
+
+test('an expired form token is treated as spam', function () {
+    $this->post(route('contact.store'), contactPayload(['_started' => encrypt(now()->subHours(3)->timestamp)]));
+
+    expect(Message::query()->count())->toBe(0);
+});
+
+test('markdown in a message does not become a link in the notification', function () {
+    $message = Message::factory()->create(['body' => '[Réinitialisez votre mot de passe](https://evil.example)']);
+
+    $html = (new NewContactMessage($message))->render();
+
+    expect($html)->not->toContain('href="https://evil.example"');
+});

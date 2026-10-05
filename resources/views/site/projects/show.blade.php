@@ -52,7 +52,7 @@
             <section class="mx-auto max-w-[820px] px-4 pb-24 sm:px-6" aria-labelledby="titre-contexte">
                 <p class="eyebrow mb-3 text-violet">Le contexte</p>
                 <h2 id="titre-contexte" class="display mb-8 text-[clamp(2rem,5vw,3rem)] leading-none">Le projet en détail</h2>
-                <div class="prose-case">{!! $project->case_study !!}</div>
+                <div class="prose-case">{!! \App\Support\RichText::sanitize($project->case_study) !!}</div>
             </section>
         @endif
 

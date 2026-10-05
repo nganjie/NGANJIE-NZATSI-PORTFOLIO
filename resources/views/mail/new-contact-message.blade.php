@@ -7,7 +7,7 @@
 **Reçu le :** {{ $contactMessage->created_at->locale('fr')->translatedFormat('j F Y à H:i') }}
 
 <x-mail::panel>
-{{ $contactMessage->body }}
+{!! nl2br(str_replace(['[', ']', '(', ')', '*', '_', '`', '#', '!'], ['&#91;', '&#93;', '&#40;', '&#41;', '&#42;', '&#95;', '&#96;', '&#35;', '&#33;'], e($contactMessage->body))) !!}
 </x-mail::panel>
 
 Répondez directement à cet e-mail pour écrire à {{ $contactMessage->name }}.

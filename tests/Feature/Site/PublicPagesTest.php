@@ -118,3 +118,11 @@ test('unknown pages show the custom 404 page', function () {
         ->assertSee('Cette page')
         ->assertSee('noindex', false);
 });
+
+test('stored case study HTML is sanitized again when displayed', function () {
+    $project = Project::factory()->create(['case_study' => ['fr' => '<p>Texte</p><script>alert(1)</script>']]);
+
+    $this->get(route('projects.show', $project))
+        ->assertSee('Texte')
+        ->assertDontSee('<script>alert(1)</script>', false);
+});
