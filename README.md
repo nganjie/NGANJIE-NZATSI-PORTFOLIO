@@ -57,6 +57,21 @@ php artisan storage:link
 composer run dev                # serveur + worker de file d'attente + Vite
 ```
 
+### Avec MySQL ou MariaDB (WAMP, XAMPP, Laragon…)
+
+PostgreSQL est la base recommandée, mais le projet fonctionne aussi avec MySQL 8 et MariaDB 10.6+ (testé sur MySQL 8.4 et MariaDB 11). Les tables sont toujours créées en InnoDB, même si le serveur utilise MyISAM par défaut.
+
+```env
+DB_CONNECTION=mysql        # ou mariadb
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nganjie_nzatsi_portfolio
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Après une migration interrompue, repartir de zéro avec `php artisan migrate:fresh --seed`.
+
 ## Compte administrateur
 
 - Le seed crée le compte `ADMIN_EMAIL` avec le mot de passe `ADMIN_PASSWORD` du fichier `.env`. Si `ADMIN_PASSWORD` est vide, un mot de passe aléatoire est affiché une seule fois dans la console.

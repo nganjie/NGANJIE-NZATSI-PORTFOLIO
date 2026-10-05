@@ -58,12 +58,23 @@ class ProjectIndex extends Component
         return $this->search !== '' || $this->type !== '' || $this->status !== '';
     }
 
+    /**
+     * SQL expression reading the JSON title column as text, for each supported database.
+     */
+    private function titleAsText(): string
+    {
+        return match (Project::query()->getConnection()->getDriverName()) {
+            'mysql', 'mariadb' => 'CAST(title AS CHAR)',
+            default => 'CAST(title AS TEXT)',
+        };
+    }
+
     public function render(): View
     {
         $projects = Project::query()
             ->with('media')
             ->when($this->search !== '', fn ($query) => $query->where(fn ($q) => $q
-                ->whereRaw('LOWER(CAST(title AS TEXT)) LIKE ?', ['%'.mb_strtolower($this->search).'%'])
+                ->whereRaw('LOWER('.$this->titleAsText().') LIKE ?', ['%'.mb_strtolower($this->search).'%'])
                 ->orWhere('slug', 'like', '%'.mb_strtolower($this->search).'%')))
             ->when(ProjectType::tryFrom($this->type), fn ($query, $type) => $query->where('type', $type))
             ->when(ProjectStatus::tryFrom($this->status), fn ($query, $status) => $query->where('status', $status))
