@@ -1,9 +1,168 @@
 @import 'tailwindcss';
 
+@import '@fontsource/schibsted-grotesk/latin-600.css';
+@import '@fontsource/schibsted-grotesk/latin-700.css';
+@import '@fontsource/schibsted-grotesk/latin-800.css';
+@import '@fontsource/figtree/latin-400.css';
+@import '@fontsource/figtree/latin-500.css';
+@import '@fontsource/figtree/latin-600.css';
+
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
+@source '../../app/Enums/*.php';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Figtree', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif;
+
+    --color-paper: #fafaf7;
+    --color-mist: #efeeea;
+    --color-ink: #0e0e10;
+    --color-coal: #17171a;
+    --color-violet: #6a1bf0;
+    --color-violet-soft: #e4daff;
+    --color-lime: #a6f20a;
+    --color-lime-soft: #e4f9c0;
+    --color-lilac: #dccbff;
+    --color-night: #0b1533;
+    --color-muted: #55545a;
+    --color-muted-dark: #b9b8c2;
+    --color-faint-dark: #d5d4dc;
+    --color-line: #deddd8;
+    --color-line-dark: #2a2a30;
+    --color-success: #2b5c00;
+    --color-danger: #a11b1b;
+
+    --tracking-display: -0.03em;
+    --tracking-label: 0.04em;
+
+    --container-content: 1180px;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+        @apply bg-paper font-sans text-[17px] leading-relaxed text-ink antialiased;
+    }
+
+    :focus-visible {
+        outline: 3px solid var(--color-lime);
+        outline-offset: 2px;
+        border-radius: 6px;
+    }
+
+    [x-cloak] {
+        display: none !important;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        html {
+            scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+            transition-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+        }
+    }
+}
+
+@layer components {
+    .wrap {
+        @apply mx-auto w-full max-w-content px-4 sm:px-6;
+    }
+
+    .display {
+        @apply font-display font-extrabold uppercase leading-[0.95] tracking-display;
+    }
+
+    .eyebrow {
+        @apply font-display text-[13px] font-bold uppercase tracking-label;
+    }
+
+    .highlight {
+        @apply inline-block rounded-xl bg-lime px-[0.18em] text-ink box-decoration-clone;
+    }
+
+    .btn {
+        @apply inline-flex min-h-14 items-center justify-center gap-2 rounded-full px-8 font-display text-sm font-bold uppercase tracking-label no-underline transition-transform duration-200 hover:-translate-y-1;
+    }
+
+    .btn-lime {
+        @apply bg-lime text-ink;
+    }
+
+    .btn-ink {
+        @apply bg-ink text-white;
+    }
+
+    .btn-violet {
+        @apply bg-violet text-white;
+    }
+
+    .btn-mist {
+        @apply bg-mist text-ink;
+    }
+
+    .nav-pill {
+        @apply rounded-full bg-mist px-[18px] py-2.5 text-[15px] font-medium text-ink no-underline transition-colors hover:bg-lime;
+    }
+
+    .lift {
+        @apply transition-transform duration-200 hover:-translate-y-1;
+    }
+
+    .link-underline {
+        @apply font-display text-[13px] font-bold uppercase tracking-label underline decoration-2 underline-offset-4 hover:text-violet;
+    }
+
+    .field-input {
+        @apply w-full rounded-2xl border border-line bg-paper px-[18px] py-4 text-base text-ink placeholder:text-muted/70 focus:border-ink focus:outline-3 focus:outline-lime;
+    }
+
+    .prose-case {
+        @apply text-[17px] leading-relaxed text-[#2a2a30];
+
+        & p,
+        & > div {
+            @apply mb-5;
+        }
+
+        & h2,
+        & h3 {
+            @apply mt-10 mb-4 font-display text-2xl font-bold;
+        }
+
+        & ul,
+        & ol {
+            @apply mb-5 space-y-2 pl-6;
+        }
+
+        & ul {
+            @apply list-disc;
+        }
+
+        & ol {
+            @apply list-decimal;
+        }
+
+        & a {
+            @apply text-violet underline underline-offset-4;
+        }
+
+        & strong {
+            @apply font-semibold text-ink;
+        }
+
+        & figure,
+        & img {
+            @apply my-6 rounded-md;
+        }
+    }
 }

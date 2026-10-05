@@ -1,0 +1,67 @@
+@import './app.css';
+@import 'trix/dist/trix.css';
+
+@source '../../app/Livewire/**/*.php';
+
+@layer components {
+    .admin-card {
+        @apply rounded-2xl border border-line bg-white p-6 md:p-7;
+    }
+
+    .admin-card-title {
+        @apply mb-5 font-display text-xl font-bold;
+    }
+
+    .admin-label {
+        @apply text-sm font-semibold;
+    }
+
+    .admin-help {
+        @apply text-[13px] text-muted;
+    }
+
+    .admin-input {
+        @apply w-full rounded-xl border border-line bg-paper px-3.5 py-3 text-[15px] text-ink placeholder:text-muted/70 focus:border-ink focus:outline-3 focus:outline-lime;
+    }
+
+    .admin-btn {
+        @apply inline-flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-full px-6 font-display text-[13px] font-bold uppercase tracking-label no-underline transition-colors disabled:cursor-not-allowed disabled:opacity-60;
+    }
+
+    .admin-btn-sm {
+        @apply min-h-10 px-4 text-xs;
+    }
+
+    .admin-link {
+        @apply cursor-pointer font-semibold text-violet underline-offset-4 hover:underline;
+    }
+
+    .admin-table th {
+        @apply border-b border-line px-4 py-3.5 text-left font-display text-xs font-bold tracking-label whitespace-nowrap text-muted uppercase;
+    }
+
+    .admin-table td {
+        @apply border-b border-mist px-4 py-3.5 align-middle;
+    }
+
+    .admin-table tbody tr:hover td {
+        @apply bg-paper;
+    }
+
+    trix-toolbar .trix-button-row {
+        @apply flex-wrap;
+    }
+
+    trix-editor {
+        @apply min-h-56 rounded-b-xl border-line bg-white px-4 py-3 text-[15px];
+    }
+
+    trix-toolbar {
+        @apply rounded-t-xl border border-b-0 border-line bg-paper p-1.5;
+    }
+}
+
+/* Outside of layers so it wins over trix.css: attachments are disabled. */
+trix-toolbar .trix-button-group--file-tools {
+    display: none;
+}
