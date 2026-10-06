@@ -1,7 +1,7 @@
 <section id="parcours" class="scroll-mt-6 py-24 md:py-28" aria-labelledby="titre-parcours">
     <div class="wrap">
-        <x-site.section-heading eyebrow="Parcours" number="03" heading-id="titre-parcours" class="mb-12 md:mb-14">
-            Mon parcours
+        <x-site.section-heading :eyebrow="__('Parcours')" number="03" heading-id="titre-parcours" class="mb-12 md:mb-14">
+            {{ __('Mon parcours') }}
         </x-site.section-heading>
     </div>
 
@@ -15,9 +15,9 @@
                     <div>
                         <p class="font-display text-[15px] font-bold">{{ $experience->periodLabel() }}</p>
                         @if ($experience->is_current)
-                            <span class="eyebrow mt-2.5 inline-block rounded-full bg-lime px-3 py-1 text-xs text-ink">Poste actuel</span>
+                            <span class="eyebrow mt-2.5 inline-block rounded-full bg-lime px-3 py-1 text-xs text-ink">{{ __('Poste actuel') }}</span>
                         @elseif ($experience->type === \App\Enums\ExperienceType::Education)
-                            <span class="eyebrow mt-2.5 inline-block rounded-full bg-mist px-3 py-1 text-xs text-muted">Formation</span>
+                            <span class="eyebrow mt-2.5 inline-block rounded-full bg-mist px-3 py-1 text-xs text-muted">{{ __('Formation') }}</span>
                         @endif
                     </div>
                     <div>

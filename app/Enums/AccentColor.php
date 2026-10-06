@@ -14,12 +14,12 @@ enum AccentColor: string
     public function label(): string
     {
         return match ($this) {
-            self::Violet => 'Violet',
-            self::Lime => 'Vert citron',
-            self::Night => 'Bleu nuit',
-            self::Lilac => 'Lilas',
-            self::Ink => 'Noir',
-            self::Mist => 'Gris',
+            self::Violet => __('Violet'),
+            self::Lime => __('Vert citron'),
+            self::Night => __('Bleu nuit'),
+            self::Lilac => __('Lilas'),
+            self::Ink => __('Noir'),
+            self::Mist => __('Gris'),
         };
     }
 

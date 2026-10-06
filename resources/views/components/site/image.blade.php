@@ -14,7 +14,7 @@
     $src = $sources->isNotEmpty() ? $media->getUrl($sources->keys()->last()) : $media->getUrl();
     $width = $media->getCustomProperty('width');
     $height = $media->getCustomProperty('height');
-    $altText = $alt ?? $media->getCustomProperty('alt.fr') ?? '';
+    $altText = $alt ?? $media->getCustomProperty('alt.'.app()->getLocale()) ?? $media->getCustomProperty('alt.fr') ?? '';
 @endphp
 
 <img src="{{ $src }}"

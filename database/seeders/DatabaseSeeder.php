@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             SkillDomainSeeder::class,
             ProcessStepSeeder::class,
             SettingSeeder::class,
+            EnglishTranslationSeeder::class,
         ]);
     }
 }

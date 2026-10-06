@@ -50,13 +50,13 @@ class Experience extends Model
             return $this->date_label;
         }
 
-        $format = fn ($date) => ucfirst($date->locale('fr')->translatedFormat('M Y'));
+        $format = fn ($date) => ucfirst($date->locale(app()->getLocale())->translatedFormat('M Y'));
 
         if ($this->started_at === null) {
             return $this->ended_at ? $format($this->ended_at) : '';
         }
 
-        $end = $this->ended_at ? $format($this->ended_at) : "aujourd'hui";
+        $end = $this->ended_at ? $format($this->ended_at) : __("aujourd'hui");
 
         return $format($this->started_at).' → '.$end;
     }

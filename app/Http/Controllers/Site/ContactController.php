@@ -16,7 +16,7 @@ class ContactController extends Controller
     public function store(ContactRequest $request): RedirectResponse
     {
         if ($request->isSpam()) {
-            return redirect()->to(route('home').'#contact')->with('contact_sent', true);
+            return redirect()->to(localized_route('home', [], $request->pageLocale()).'#contact')->with('contact_sent', true);
         }
 
         $message = Message::query()->create([
@@ -30,6 +30,6 @@ class ContactController extends Controller
             Mail::to($recipient)->queue(new NewContactMessage($message));
         }
 
-        return redirect()->to(route('home').'#contact')->with('contact_sent', true);
+        return redirect()->to(localized_route('home', [], $request->pageLocale()).'#contact')->with('contact_sent', true);
     }
 }

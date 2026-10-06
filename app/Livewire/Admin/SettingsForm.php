@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Livewire\Admin\Concerns\EditsTranslations;
 use App\Models\Profile;
 use App\Support\MediaUploader;
 use App\Support\Settings;
@@ -17,11 +18,13 @@ use Livewire\WithFileUploads;
 #[Title('Paramètres')]
 class SettingsForm extends Component
 {
-    use WithFileUploads;
+    use EditsTranslations, WithFileUploads;
 
-    public string $seoTitle = '';
+    /** @var array{fr: string, en: string} */
+    public array $seoTitle = ['fr' => '', 'en' => ''];
 
-    public string $seoDescription = '';
+    /** @var array{fr: string, en: string} */
+    public array $seoDescription = ['fr' => '', 'en' => ''];
 
     /** @var list<string> */
     public array $sections = [];
@@ -39,10 +42,21 @@ class SettingsForm extends Component
 
     public function mount(): void
     {
-        $this->seoTitle = (string) Settings::get('seo.default_title');
-        $this->seoDescription = (string) Settings::get('seo.default_description');
+        $this->seoTitle = $this->settingTranslations('seo.default_title');
+        $this->seoDescription = $this->settingTranslations('seo.default_description');
         $this->sections = array_values((array) Settings::get('sections.visible'));
         $this->notifyEmail = (string) Settings::get('contact.notify_email');
+    }
+
+    /**
+     * @return array{fr: string, en: string}
+     */
+    private function settingTranslations(string $key): array
+    {
+        $value = Settings::get($key);
+        $value = is_array($value) ? $value : ['fr' => (string) $value];
+
+        return ['fr' => (string) ($value['fr'] ?? ''), 'en' => (string) ($value['en'] ?? '')];
     }
 
     public function toggleSection(string $section): void
@@ -55,16 +69,17 @@ class SettingsForm extends Component
     public function save(): void
     {
         $this->validate([
-            'seoTitle' => ['required', 'string', 'max:70'],
-            'seoDescription' => ['nullable', 'string', 'max:170'],
+            'seoTitle.fr' => ['required', 'string', 'max:70'],
+            'seoTitle.en' => ['nullable', 'string', 'max:70'],
+            'seoDescription.*' => ['nullable', 'string', 'max:170'],
             'sections' => ['array'],
             'sections.*' => [Rule::in(array_keys(Settings::SECTIONS))],
             'notifyEmail' => ['nullable', 'email', 'max:255'],
             'shareImage' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:8192'],
-        ], attributes: ['seoTitle' => 'titre par défaut', 'notifyEmail' => 'e-mail de notification', 'shareImage' => 'image de partage']);
+        ], attributes: ['seoTitle.fr' => 'titre par défaut', 'notifyEmail' => 'e-mail de notification', 'shareImage' => 'image de partage']);
 
-        Settings::set('seo.default_title', $this->seoTitle);
-        Settings::set('seo.default_description', $this->seoDescription);
+        Settings::set('seo.default_title', $this->cleanTranslation($this->seoTitle));
+        Settings::set('seo.default_description', $this->cleanTranslation($this->seoDescription));
         Settings::set('sections.visible', array_values(array_intersect(array_keys(Settings::SECTIONS), $this->sections)));
         Settings::set('contact.notify_email', $this->notifyEmail ?: null);
 

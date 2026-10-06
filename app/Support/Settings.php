@@ -45,6 +45,21 @@ class Settings
         return $all[$key] ?? $default ?? self::DEFAULTS[$key] ?? null;
     }
 
+    /**
+     * A setting stored either as plain text or as ['fr' => …, 'en' => …],
+     * read in the current locale with a French fallback.
+     */
+    public static function localized(string $key): ?string
+    {
+        $value = self::get($key);
+
+        if (is_array($value)) {
+            return ($value[app()->getLocale()] ?? null) ?: ($value[Localization::DEFAULT] ?? null);
+        }
+
+        return $value;
+    }
+
     public static function set(string $key, mixed $value): void
     {
         Setting::query()->updateOrCreate(['key' => $key], ['value' => $value]);

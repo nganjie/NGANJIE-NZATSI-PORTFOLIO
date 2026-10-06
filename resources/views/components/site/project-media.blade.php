@@ -16,7 +16,7 @@
 
 <div {{ $attributes->class('media-zoom @container relative overflow-hidden rounded-md p-3.5') }} style="background-color: {{ $accent->hex() }}">
     @if ($media)
-        <x-site.image :media="$media" :sizes="$sizes" :eager="$eager" :alt="$media->getCustomProperty('alt.fr') ?: 'Capture d\'écran de '.$project->title"
+        <x-site.image :media="$media" :sizes="$sizes" :eager="$eager" :alt="$media->getCustomProperty('alt.'.app()->getLocale()) ?: $media->getCustomProperty('alt.fr') ?: __('Capture d\'écran de :title', ['title' => $project->title])"
             class="size-full rounded-[3px] object-cover object-top" />
     @else
         <div aria-hidden="true" @class([

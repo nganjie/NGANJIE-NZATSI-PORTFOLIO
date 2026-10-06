@@ -5,12 +5,13 @@
         <form wire:submit="save" class="flex flex-col gap-6">
             <section class="admin-card">
                 <h2 class="admin-card-title">Référencement par défaut</h2>
+                <x-admin.lang-tabs :current="$locale" />
                 <div class="flex flex-col gap-5">
-                    <x-admin.field label="Titre du site" for="seoTitle" :help="mb_strlen($seoTitle).' / 60 caractères conseillés. Utilisé pour l\'accueil.'">
-                        <input id="seoTitle" type="text" wire:model.live.debounce.400ms="seoTitle" class="admin-input">
+                    <x-admin.field label="Titre du site ({{ strtoupper($locale) }})" for="seoTitle-{{ $locale }}" error="seoTitle.{{ $locale }}" :help="mb_strlen($seoTitle[$locale]).' / 60 caractères conseillés. Utilisé pour l\'accueil.'">
+                        <input id="seoTitle-{{ $locale }}" type="text" wire:model.live.debounce.400ms="seoTitle.{{ $locale }}" class="admin-input">
                     </x-admin.field>
-                    <x-admin.field label="Description par défaut" for="seoDescription" :help="mb_strlen($seoDescription).' / 160 caractères conseillés.'">
-                        <textarea id="seoDescription" rows="3" wire:model.live.debounce.400ms="seoDescription" class="admin-input"></textarea>
+                    <x-admin.field label="Description par défaut ({{ strtoupper($locale) }})" for="seoDescription-{{ $locale }}" error="seoDescription.{{ $locale }}" :help="mb_strlen($seoDescription[$locale]).' / 160 caractères conseillés.'">
+                        <textarea id="seoDescription-{{ $locale }}" rows="3" wire:model.live.debounce.400ms="seoDescription.{{ $locale }}" class="admin-input"></textarea>
                     </x-admin.field>
                     <x-admin.field label="Image de partage (réseaux sociaux)" for="shareImage" help="1200 × 630 px conseillé. Utilisée quand une page n'a pas d'image propre.">
                         @if ($shareImage?->isPreviewable())

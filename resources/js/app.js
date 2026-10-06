@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const setOpen = (open) => {
         toggle.setAttribute('aria-expanded', String(open));
-        toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+        toggle.setAttribute('aria-label', open ? toggle.dataset.labelClose : toggle.dataset.labelOpen);
         menu.hidden = !open;
         document.body.classList.toggle('overflow-hidden', open);
     };

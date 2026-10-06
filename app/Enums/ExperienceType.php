@@ -10,8 +10,8 @@ enum ExperienceType: string
     public function label(): string
     {
         return match ($this) {
-            self::Job => 'Expérience',
-            self::Education => 'Formation',
+            self::Job => __('Expérience'),
+            self::Education => __('Formation'),
         };
     }
 }

@@ -11,6 +11,6 @@
         @endforeach
     </div>
     @if ($current === 'en')
-        <p class="admin-help mt-2">Version anglaise : affichée sur le site à partir de la V2. Les champs vides reprennent le texte français.</p>
+        <p class="admin-help mt-2">Version anglaise : affichée sur le site en anglais (/en). Un champ laissé vide affiche le texte français.</p>
     @endif
 </div>

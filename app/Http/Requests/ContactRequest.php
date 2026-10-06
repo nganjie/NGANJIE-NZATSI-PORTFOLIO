@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Enums\MessageType;
+use App\Support\Localization;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -44,10 +45,10 @@ class ContactRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'type' => 'type de demande',
-            'name' => 'nom',
-            'email' => 'e-mail',
-            'body' => 'message',
+            'type' => __('type de demande'),
+            'name' => __('nom'),
+            'email' => __('e-mail'),
+            'body' => __('message'),
         ];
     }
 
@@ -71,8 +72,23 @@ class ContactRequest extends FormRequest
         return $elapsed < self::MIN_SECONDS || $elapsed > self::MAX_SECONDS;
     }
 
+    /**
+     * Language of the page the form was sent from.
+     */
+    public function pageLocale(): string
+    {
+        $locale = (string) $this->input('locale');
+
+        return Localization::isSupported($locale) ? $locale : Localization::DEFAULT;
+    }
+
+    protected function prepareForValidation(): void
+    {
+        app()->setLocale($this->pageLocale());
+    }
+
     protected function getRedirectUrl(): string
     {
-        return route('home').'#contact';
+        return localized_route('home', [], $this->pageLocale()).'#contact';
     }
 }

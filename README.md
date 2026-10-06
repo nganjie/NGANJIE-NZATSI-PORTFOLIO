@@ -72,6 +72,16 @@ DB_PASSWORD=
 
 Après une migration interrompue, repartir de zéro avec `php artisan migrate:fresh --seed`.
 
+## Version anglaise
+
+Le site est bilingue : français à la racine (`/`, `/projets`), anglais sous `/en` (`/en`, `/en/projects`), avec un sélecteur FR / EN dans l'en-tête et le pied de page. Les textes anglais se saisissent dans l'onglet **English** de chaque formulaire de l'administration.
+
+Pour ajouter le contenu anglais de départ sur un site déjà rempli, sans toucher au français ni aux traductions déjà saisies :
+
+```bash
+php artisan db:seed --class=EnglishTranslationSeeder
+```
+
 ## Compte administrateur
 
 - Le seed crée le compte `ADMIN_EMAIL` avec le mot de passe `ADMIN_PASSWORD` du fichier `.env`. Si `ADMIN_PASSWORD` est vide, un mot de passe aléatoire est affiché une seule fois dans la console.

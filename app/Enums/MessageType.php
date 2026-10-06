@@ -11,9 +11,9 @@ enum MessageType: string
     public function label(): string
     {
         return match ($this) {
-            self::Job => "Offre d'emploi ou de stage",
-            self::Freelance => 'Mission freelance',
-            self::Other => 'Autre demande',
+            self::Job => __("Offre d'emploi ou de stage"),
+            self::Freelance => __('Mission freelance'),
+            self::Other => __('Autre demande'),
         };
     }
 }

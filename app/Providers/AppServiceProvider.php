@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Message;
 use App\Models\Profile;
+use App\Support\Localization;
 use App\Support\Settings;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -62,9 +63,11 @@ class AppServiceProvider extends ServiceProvider
 
     private function tooManyContactAttempts(): mixed
     {
-        return redirect()->to(route('home').'#contact')
+        $locale = Localization::isSupported(request()->input('locale')) ? request()->input('locale') : Localization::DEFAULT;
+
+        return redirect()->to(localized_route('home', [], $locale).'#contact')
             ->withInput()
-            ->withErrors(['body' => 'Trop de messages envoyés. Réessayez dans quelques minutes ou écrivez-moi directement par e-mail.']);
+            ->withErrors(['body' => __('Trop de messages envoyés. Réessayez dans quelques minutes ou écrivez-moi directement par e-mail.', [], $locale)]);
     }
 
     private function shareViewData(): void

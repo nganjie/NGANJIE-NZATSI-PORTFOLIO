@@ -12,10 +12,10 @@ enum ProjectType: string
     public function label(): string
     {
         return match ($this) {
-            self::Professional => 'Professionnel',
-            self::Freelance => 'Freelance',
-            self::Personal => 'Personnel',
-            self::Academic => 'Académique',
+            self::Professional => __('Professionnel'),
+            self::Freelance => __('Freelance'),
+            self::Personal => __('Personnel'),
+            self::Academic => __('Académique'),
         };
     }
 

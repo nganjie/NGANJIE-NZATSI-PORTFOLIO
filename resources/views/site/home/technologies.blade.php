@@ -1,10 +1,10 @@
 <section class="bg-ink py-24 text-white md:py-28" aria-labelledby="titre-technologies">
     <div class="wrap">
         <div class="mb-14 flex flex-wrap items-end justify-between gap-6">
-            <x-site.section-heading eyebrow="Technologies" number="04" dark heading-id="titre-technologies">
-                Mes outils
+            <x-site.section-heading :eyebrow="__('Technologies')" number="04" dark heading-id="titre-technologies">
+                {{ __('Mes outils') }}
             </x-site.section-heading>
-            <p data-reveal class="max-w-sm text-muted-dark">Les technologies que j'utilise au quotidien, en production.</p>
+            <p data-reveal class="max-w-sm text-muted-dark">{{ __('Les technologies que j\'utilise au quotidien, en production.') }}</p>
         </div>
 
         <ul data-reveal-group="70" class="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line-dark bg-line-dark lg:grid-cols-4">

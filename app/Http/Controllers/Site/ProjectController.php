@@ -60,7 +60,7 @@ class ProjectController extends Controller
                 '@type' => 'CreativeWork',
                 'name' => $project->title,
                 'description' => $project->summary,
-                'url' => route('projects.show', $project),
+                'url' => localized_route('projects.show', $project),
                 'keywords' => $project->technologies->pluck('name')->join(', '),
                 'creator' => ['@type' => 'Person', 'name' => 'Nganjie Nzatsi'],
             ]),

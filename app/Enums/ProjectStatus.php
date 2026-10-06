@@ -10,8 +10,8 @@ enum ProjectStatus: string
     public function label(): string
     {
         return match ($this) {
-            self::Draft => 'Brouillon',
-            self::Published => 'Publié',
+            self::Draft => __('Brouillon'),
+            self::Published => __('Publié'),
         };
     }
 }

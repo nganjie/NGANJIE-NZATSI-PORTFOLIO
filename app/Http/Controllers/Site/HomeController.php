@@ -38,7 +38,7 @@ class HomeController extends Controller
                 'name' => $profile->display_name,
                 'jobTitle' => $profile->headline,
                 'email' => 'mailto:'.$profile->email,
-                'url' => route('home'),
+                'url' => localized_route('home'),
                 'address' => ['@type' => 'PostalAddress', 'addressLocality' => 'Douala', 'addressCountry' => 'CM'],
                 'sameAs' => array_values(array_filter([$profile->github_url, $profile->linkedin_url])),
                 'image' => $profile->getFirstMediaUrl('photo', 'md') ?: null,

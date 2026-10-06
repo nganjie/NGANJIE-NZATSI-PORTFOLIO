@@ -1,6 +1,6 @@
 @php
     $items = $technologies->pluck('name');
-    $words = ['Applications web', 'Fintech', 'API REST', 'Temps réel', 'Back-offices'];
+    $words = [__('Applications web'), 'Fintech', 'API REST', __('Temps réel'), 'Back-offices'];
 @endphp
 
 <div aria-hidden="true" class="relative -my-4 py-10 select-none md:py-14">
