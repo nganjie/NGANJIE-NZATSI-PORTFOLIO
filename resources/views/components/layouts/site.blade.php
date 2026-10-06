@@ -12,6 +12,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.motionReady){document.documentElement.classList.remove('js')}},3000)</script>
     <x-site.seo :title="$title" :description="$description" :image="$image" :type="$type" :json-ld="$jsonLd" :noindex="$noindex" />
     <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
     <meta name="theme-color" content="#FAFAF7">

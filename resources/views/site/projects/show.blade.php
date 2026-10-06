@@ -6,6 +6,8 @@
         </div>
     @endif
 
+    <div data-progress class="scroll-progress" aria-hidden="true"></div>
+
     <article>
         <header class="wrap pt-10 pb-12 md:pt-14 md:pb-14">
             <nav aria-label="Fil d'Ariane" class="mb-6 text-[15px] text-muted">
@@ -14,19 +16,19 @@
                 <span aria-current="page">{{ $project->title }}</span>
             </nav>
 
-            <ul class="mb-6 flex flex-wrap gap-2" aria-label="Catégories">
-                <li class="eyebrow rounded-full bg-violet px-3.5 py-1.5 text-xs text-white">{{ $project->type->label() }}</li>
+            <ul data-reveal-group="80" class="mb-6 flex flex-wrap gap-2" aria-label="Catégories">
+                <li data-reveal="pop" class="eyebrow rounded-full bg-violet px-3.5 py-1.5 text-xs text-white">{{ $project->type->label() }}</li>
                 @foreach ($project->tagList() as $tag)
-                    <li class="eyebrow rounded-full bg-mist px-3.5 py-1.5 text-xs">{{ $tag }}</li>
+                    <li data-reveal="pop" class="eyebrow rounded-full bg-mist px-3.5 py-1.5 text-xs">{{ $tag }}</li>
                 @endforeach
             </ul>
 
             <div class="flex flex-wrap items-end justify-between gap-8">
                 <div class="max-w-[820px]">
-                    <h1 class="display mb-6 text-[clamp(2.75rem,8vw,6rem)] break-words">{{ $project->title }}</h1>
-                    <p class="text-lg leading-normal text-[#2a2a30] md:text-[21px]">{{ $project->summary }}</p>
+                    <h1 data-split class="display mb-6 text-[clamp(2.75rem,8vw,6rem)] break-words">{{ $project->title }}</h1>
+                    <p data-reveal style="--reveal-delay: 300ms" class="text-lg leading-normal text-[#2a2a30] md:text-[21px]">{{ $project->summary }}</p>
                 </div>
-                <div class="flex flex-wrap gap-3">
+                <div data-reveal style="--reveal-delay: 450ms" class="flex flex-wrap gap-3">
                     @if ($project->demo_url)
                         <a href="{{ $project->demo_url }}" class="btn btn-ink" target="_blank" rel="noopener">Voir le site en ligne ↗</a>
                     @endif
@@ -38,9 +40,9 @@
         </header>
 
         <div class="wrap">
-            <x-site.project-media :project="$project" class="h-[300px] md:h-[600px]" sizes="(min-width: 1180px) 1132px, 100vw" eager />
+            <x-site.project-media :project="$project" data-reveal="wipe" class="h-[300px] md:h-[600px]" sizes="(min-width: 1180px) 1132px, 100vw" eager />
 
-            <dl class="grid grid-cols-1 gap-4 pt-10 pb-20 sm:grid-cols-2 lg:grid-cols-4 md:pb-24">
+            <dl data-reveal-group="100" class="grid grid-cols-1 gap-4 pt-10 pb-20 sm:grid-cols-2 lg:grid-cols-4 md:pb-24">
                 @if ($project->role)<x-site.fact label="Rôle">{{ $project->role }}</x-site.fact>@endif
                 @if ($project->context)<x-site.fact label="Contexte">{{ $project->context }}</x-site.fact>@endif
                 @if ($project->technologies->isNotEmpty())<x-site.fact label="Stack">{{ $project->stackLabel() }}</x-site.fact>@endif
@@ -50,21 +52,21 @@
 
         @if ($project->case_study)
             <section class="mx-auto max-w-[820px] px-4 pb-24 sm:px-6" aria-labelledby="titre-contexte">
-                <p class="eyebrow mb-3 text-violet">Le contexte</p>
-                <h2 id="titre-contexte" class="display mb-8 text-[clamp(2rem,5vw,3rem)] leading-none">Le projet en détail</h2>
-                <div class="prose-case">{!! \App\Support\RichText::sanitize($project->case_study) !!}</div>
+                <p data-reveal class="eyebrow mb-3 text-violet">Le contexte</p>
+                <h2 id="titre-contexte" data-split class="display mb-8 text-[clamp(2rem,5vw,3rem)] leading-none">Le projet en détail</h2>
+                <div data-reveal class="prose-case">{!! \App\Support\RichText::sanitize($project->case_study) !!}</div>
             </section>
         @endif
 
         @if ($project->tasks->isNotEmpty())
             <section class="bg-ink py-24 text-white md:py-28" aria-labelledby="titre-realisations">
                 <div class="wrap">
-                    <p class="eyebrow mb-3 text-lime">Ce que j'ai fait</p>
-                    <h2 id="titre-realisations" class="display mb-14 text-[clamp(2.25rem,6vw,3.5rem)] leading-none">Mes réalisations</h2>
-                    <ol>
+                    <p data-reveal class="eyebrow mb-3 text-lime">Ce que j'ai fait</p>
+                    <h2 id="titre-realisations" data-split class="display mb-14 text-[clamp(2.25rem,6vw,3.5rem)] leading-none">Mes réalisations</h2>
+                    <ol data-reveal-group="120">
                         @foreach ($project->tasks as $task)
-                            <li class="grid grid-cols-[56px_minmax(0,1fr)] gap-5 border-t border-line-dark py-8 md:grid-cols-[80px_minmax(0,1fr)] md:gap-6">
-                                <span class="grid size-12 place-items-center rounded-full bg-lime font-display font-extrabold text-ink" aria-hidden="true">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
+                            <li data-reveal class="grid grid-cols-[56px_minmax(0,1fr)] gap-5 border-t border-line-dark py-8 md:grid-cols-[80px_minmax(0,1fr)] md:gap-6">
+                                <span data-reveal="pop" class="grid size-12 place-items-center rounded-full bg-lime font-display font-extrabold text-ink" aria-hidden="true">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
                                 <div>
                                     <h3 class="mb-2 font-display text-[22px] font-bold md:text-[26px]">{{ $task->title }}</h3>
                                     @if ($task->body)<p class="max-w-3xl text-muted-dark">{{ $task->body }}</p>@endif
@@ -78,11 +80,11 @@
 
         @if ($gallery->isNotEmpty())
             <section class="wrap pt-24 pb-20" aria-labelledby="titre-galerie">
-                <p class="eyebrow mb-3 text-violet">Galerie</p>
-                <h2 id="titre-galerie" class="display mb-10 text-[clamp(2rem,5vw,3rem)] leading-none">En images</h2>
-                <div class="grid gap-6 md:grid-cols-2">
+                <p data-reveal class="eyebrow mb-3 text-violet">Galerie</p>
+                <h2 id="titre-galerie" data-split class="display mb-10 text-[clamp(2rem,5vw,3rem)] leading-none">En images</h2>
+                <div data-reveal-group="140" class="grid gap-6 md:grid-cols-2">
                     @foreach ($gallery as $image)
-                        <figure>
+                        <figure data-reveal="wipe">
                             <div class="rounded-md p-3.5" style="background-color: {{ $project->accent_color->hex() }}">
                                 <x-site.image :media="$image" sizes="(min-width: 768px) 560px, 100vw" class="w-full rounded-[3px]" />
                             </div>
@@ -98,13 +100,13 @@
         @if ($project->lesson || $project->resultLines())
             <section class="wrap grid gap-6 pt-10 pb-28 md:grid-cols-2" aria-label="Bilan">
                 @if ($project->lesson)
-                    <blockquote class="-rotate-[1.5deg] rounded-2xl border border-ink bg-white p-8 motion-reduce:rotate-0 md:p-10">
+                    <blockquote data-reveal="drop" class="-rotate-[1.5deg] rounded-2xl border border-ink bg-white p-8 motion-reduce:rotate-0 md:p-10">
                         <p class="eyebrow mb-4 text-violet">Ce que j'en retiens</p>
                         <p class="font-display text-2xl leading-snug font-bold md:text-[28px]">« {{ $project->lesson }} »</p>
                     </blockquote>
                 @endif
                 @if ($project->resultLines())
-                    <div class="rounded-2xl bg-lime p-8 md:p-10">
+                    <div data-reveal style="--reveal-delay: 150ms" class="rounded-2xl bg-lime p-8 md:p-10">
                         <h2 class="eyebrow mb-4">Résultats</h2>
                         <ul class="flex list-disc flex-col gap-2.5 pl-5 text-lg">
                             @foreach ($project->resultLines() as $result)
@@ -122,9 +124,9 @@
             <div class="wrap flex flex-wrap items-center justify-between gap-6">
                 <div>
                     <p class="eyebrow mb-2 text-violet-soft">Projet suivant</p>
-                    <p class="display text-[clamp(2.25rem,6vw,3.5rem)] leading-none">{{ $next->title }}</p>
+                    <p data-reveal="right" class="display text-[clamp(2.25rem,6vw,3.5rem)] leading-none">{{ $next->title }}</p>
                 </div>
-                <span aria-hidden="true" class="grid size-[88px] place-items-center rounded-full bg-lime text-4xl text-ink transition-transform group-hover:translate-x-2">→</span>
+                <span aria-hidden="true" data-reveal="pop" style="--reveal-delay: 250ms" class="grid size-[88px] place-items-center rounded-full bg-lime text-4xl text-ink transition-[translate] duration-300 group-hover:translate-x-2">→</span>
             </div>
         </a>
     @endif

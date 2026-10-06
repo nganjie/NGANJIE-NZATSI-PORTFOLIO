@@ -1,7 +1,11 @@
+import { initMotion } from './motion';
+
 /**
- * Public site: mobile menu toggle. Everything else works without JavaScript.
+ * Public site: mobile menu toggle and animations. Everything works without JavaScript.
  */
 document.addEventListener('DOMContentLoaded', () => {
+    initMotion();
+
     const toggle = document.querySelector('[data-menu-toggle]');
     const menu = document.getElementById('menu-mobile');
 

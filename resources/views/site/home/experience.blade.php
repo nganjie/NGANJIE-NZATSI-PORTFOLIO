@@ -7,7 +7,7 @@
 
     <ol>
         @foreach ($experiences as $experience)
-            <li @class(['bg-violet text-white' => $experience->is_current])>
+            <li data-reveal="{{ $experience->is_current ? 'band' : 'up' }}" @class(['current-band text-white' => $experience->is_current])>
                 <div @class([
                     'wrap grid gap-4 py-9 md:grid-cols-[200px_minmax(0,1fr)_minmax(0,1.3fr)] md:gap-8',
                     'border-b border-line' => ! $experience->is_current && ! $loop->last,

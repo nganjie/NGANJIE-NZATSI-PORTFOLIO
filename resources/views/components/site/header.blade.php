@@ -10,7 +10,7 @@
     ])->only($sections);
 @endphp
 
-<header class="relative z-20">
+<header class="site-header sticky top-0 z-40">
     <div class="wrap flex items-center justify-between gap-6 py-5 md:py-7">
         <x-site.logo />
 

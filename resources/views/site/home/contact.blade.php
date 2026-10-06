@@ -1,9 +1,9 @@
 <section id="contact" class="scroll-mt-6 bg-mist py-24 md:py-28" aria-labelledby="titre-contact">
     <div class="wrap grid items-start gap-12 md:grid-cols-2">
-        <div>
-            <p class="eyebrow mb-3 text-violet">06 — Contact</p>
-            <h2 id="titre-contact" class="display mb-6 text-[clamp(2.25rem,6vw,4rem)] leading-none">Parlons de votre <span class="highlight">projet</span></h2>
-            <p class="mb-8 max-w-md text-muted">Un poste, un stage, une mission ou une idée d'application : écrivez-moi, je vous réponds rapidement.</p>
+        <div data-reveal-group="100">
+            <p data-reveal class="eyebrow mb-3 text-violet">06 — Contact</p>
+            <h2 id="titre-contact" data-split class="display mb-6 text-[clamp(2.25rem,6vw,4rem)] leading-none">Parlons de votre <span class="highlight">projet</span></h2>
+            <p data-reveal class="mb-8 max-w-md text-muted">Un poste, un stage, une mission ou une idée d'application : écrivez-moi, je vous réponds rapidement.</p>
             <p class="mb-1.5 text-sm text-muted">Ou directement par e-mail</p>
             <a href="mailto:{{ $profile->email }}" class="font-display text-xl font-bold break-all text-ink hover:text-violet md:text-[26px]">{{ $profile->email }}</a>
             @if ($profile->phone)
@@ -11,7 +11,7 @@
             @endif
         </div>
 
-        <div class="rounded-[20px] bg-white p-6 md:p-9">
+        <div data-reveal style="--reveal-delay: 200ms" class="rounded-[20px] bg-white p-6 md:p-9">
             @if (session('contact_sent'))
                 <div role="status" class="mb-6 rounded-xl bg-lime-soft p-4 font-semibold text-success">
                     Merci, votre message a bien été envoyé. Je vous réponds rapidement.

@@ -4,9 +4,9 @@
             Du serveur à l'écran, de bout en bout
         </x-site.section-heading>
 
-        <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <ul data-reveal-group="120" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             @foreach ($skillDomains as $domain)
-                <li class="lift flex flex-col gap-4 rounded-2xl border border-line-dark p-7">
+                <li data-reveal class="lift flex flex-col gap-4 rounded-2xl border border-line-dark p-7">
                     <span class="font-display text-[15px] font-extrabold text-lime">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
                     <h3 class="font-display text-2xl leading-tight font-bold">{{ $domain->title }}</h3>
                     <p class="text-base text-muted-dark">{{ $domain->description }}</p>

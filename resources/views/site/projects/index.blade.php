@@ -1,11 +1,11 @@
 <x-layouts.site title="Projets" description="Applications professionnelles en production, projets fintech, personnels et académiques de {{ $siteProfile->display_name }}.">
     <section class="wrap relative pt-10 pb-12 md:pt-16 md:pb-14">
-        <div aria-hidden="true" class="pointer-events-none absolute top-10 right-6 hidden h-[84px] w-[220px] -rotate-[14deg] rounded-full bg-lime md:block"></div>
+        <div aria-hidden="true" data-reveal="scale" style="--reveal-delay: 500ms" class="pointer-events-none absolute top-10 right-6 hidden h-[84px] w-[220px] -rotate-[14deg] rounded-full bg-lime md:block"></div>
         <nav aria-label="Fil d'Ariane" class="mb-4 text-[15px] text-muted">
             <a href="{{ route('home') }}" class="text-muted hover:text-violet">Accueil</a> <span aria-hidden="true">/</span> <span aria-current="page">Projets</span>
         </nav>
-        <h1 class="display relative text-[clamp(3rem,9vw,6rem)]">Tous mes projets</h1>
-        <p class="mt-6 max-w-xl text-lg text-muted md:text-[19px]">Applications en production, plateformes fintech et projets personnels : {{ $total }} {{ \Illuminate\Support\Str::plural('projet', $total) }} publiés.</p>
+        <h1 data-split class="display relative text-[clamp(3rem,9vw,6rem)]">Tous mes projets</h1>
+        <p data-reveal style="--reveal-delay: 300ms" class="mt-6 max-w-xl text-lg text-muted md:text-[19px]">Applications en production, plateformes fintech et projets personnels : {{ $total }} {{ \Illuminate\Support\Str::plural('projet', $total) }} publiés.</p>
     </section>
 
     <section class="wrap pb-28" aria-label="Liste des projets">
@@ -36,9 +36,9 @@
         @if ($projects->isEmpty())
             <p class="rounded-2xl bg-mist p-8 text-muted">Aucun projet dans cette catégorie pour le moment.</p>
         @else
-            <ul class="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+            <ul data-reveal-group="90" class="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
                 @foreach ($projects as $project)
-                    <li>
+                    <li data-reveal>
                         <a href="{{ route('projects.show', $project) }}" class="lift group flex flex-col gap-4 text-ink no-underline">
                             <x-site.project-media :project="$project" class="h-64" sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" />
                             <div class="flex flex-wrap gap-2">

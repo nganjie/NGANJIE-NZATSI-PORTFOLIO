@@ -14,7 +14,7 @@
     $labelSize = round(min(11, 118 / max($longestWord, 1)), 2);
 @endphp
 
-<div {{ $attributes->class('@container relative overflow-hidden rounded-md p-3.5') }} style="background-color: {{ $accent->hex() }}">
+<div {{ $attributes->class('media-zoom @container relative overflow-hidden rounded-md p-3.5') }} style="background-color: {{ $accent->hex() }}">
     @if ($media)
         <x-site.image :media="$media" :sizes="$sizes" :eager="$eager" :alt="$media->getCustomProperty('alt.fr') ?: 'Capture d\'écran de '.$project->title"
             class="size-full rounded-[3px] object-cover object-top" />
@@ -25,7 +25,7 @@
             'border-ink/30 text-ink' => ! $accent->isDark(),
         ])>
             @if ($label)
-                <span class="display leading-[0.92] [overflow-wrap:break-word] opacity-90" style="font-size: min({{ $labelSize }}cqw, 3.5rem)">{{ $project->title }}</span>
+                <span class="media-label display leading-[0.92] [overflow-wrap:break-word] opacity-90" style="font-size: min({{ $labelSize }}cqw, 3.5rem)">{{ $project->title }}</span>
             @endif
         </div>
     @endif

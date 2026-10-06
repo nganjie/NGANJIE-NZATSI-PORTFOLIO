@@ -1,10 +1,14 @@
 <x-layouts.site :json-ld="$jsonLd">
     <x-slot:decor>
-        <div aria-hidden="true" class="pointer-events-none absolute -top-56 -right-44 size-[420px] rounded-full bg-lime md:size-[560px]"></div>
-        <div aria-hidden="true" class="pointer-events-none absolute top-[330px] -right-32 hidden h-[150px] w-[380px] -rotate-[28deg] rounded-full bg-violet md:block"></div>
+        <div aria-hidden="true" data-parallax="0.12" style="--depth: 14" class="breathe pointer-events-none absolute -top-56 -right-44 size-[420px] rounded-full bg-lime md:size-[560px]"></div>
+        <div aria-hidden="true" data-parallax="0.28" style="--depth: -26" class="pointer-events-none absolute top-[330px] -right-32 hidden h-[150px] w-[380px] -rotate-[28deg] rounded-full bg-violet md:block"></div>
     </x-slot:decor>
 
     @include('site.home.hero')
+
+    @if ($technologies->isNotEmpty())
+        @include('site.home.marquee')
+    @endif
 
     @if (in_array('projects', $siteSections, true) && $featuredProjects->isNotEmpty())
         @include('site.home.projects')

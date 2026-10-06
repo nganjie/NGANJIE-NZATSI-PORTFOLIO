@@ -75,3 +75,23 @@ Couleurs d'accent d'un projet (`accent_color`) : `violet`, `lime`, `night`, `lil
   --radius-media: 6px;
 }
 ```
+
+## Animations
+
+Principe : du mouvement qui accompagne la lecture, jamais qui la bloque. Animations courtes (0,8 à 1,1 s), uniquement sur `transform`, `opacity` et `clip-path` (aucun décalage de mise en page), sans bibliothèque externe (`resources/js/motion.js`, ~2 Ko).
+
+| Élément | Effet |
+|---|---|
+| Grands titres (`data-split`) | Les mots montent un à un derrière un masque ; le mot surligné est peint en vert citron de gauche à droite |
+| Formes du haut de page | Le disque « respire » lentement ; disque et pilule suivent légèrement la souris et le défilement (parallaxe) |
+| Bande défilante | Deux bandeaux croisés (vert citron et noir) qui défilent en sens inverse ; pause au survol |
+| Images de projet (`data-reveal="wipe"`) | Ouverture en rideau de bas en haut ; au survol, l'image zoome et le nom remonte |
+| Cartes et listes (`data-reveal-group`) | Apparition en cascade au défilement |
+| Cartes « méthode » et citation (`drop`) | Tombent en place en pivotant |
+| Poste actuel (`band`) | La bande violette se déploie de gauche à droite |
+| Pastilles et étiquettes (`pop`) | Petit rebond à l'apparition |
+| En-tête | Collé en haut, fond flouté après défilement, se cache en descendant et revient en remontant |
+| Détail d'un projet | Barre de progression de lecture vert citron en haut de l'écran |
+| Disponibilité | Point vert qui pulse doucement |
+
+Accessibilité : tout est désactivé si le système demande de réduire les animations. Sans JavaScript (ou si le script ne se charge pas dans les 3 secondes), tout le contenu reste visible. Les titres découpés gardent leur texte complet pour les lecteurs d'écran (`aria-label`).
