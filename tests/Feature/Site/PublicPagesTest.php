@@ -126,3 +126,15 @@ test('stored case study HTML is sanitized again when displayed', function () {
         ->assertSee('Texte')
         ->assertDontSee('<script>alert(1)</script>', false);
 });
+
+test('French content is shown even when the app locale is not French', function () {
+    config(['app.locale' => 'en', 'app.fallback_locale' => 'en']);
+    app()->setLocale('en');
+    $this->seed(DatabaseSeeder::class);
+
+    $this->get(route('home'))
+        ->assertOk()
+        ->assertSee('API et back-end')
+        ->assertSee('Comprendre')
+        ->assertSee('Développeur full stack C# .NET / Angular (alternance)');
+});
