@@ -90,18 +90,26 @@ php artisan db:seed --class=EnglishTranslationSeeder
 
 ## Mise en production
 
-Le fichier `docker-compose.prod.yml` lance : `app` (PHP-FPM, migrations automatiques au démarrage), `queue`, `scheduler`, `web` (Caddy avec certificat HTTPS Let's Encrypt automatique) et `db` (PostgreSQL, non exposé).
+`docker-compose.prod.yml` lance `portfolio-app` (PHP-FPM, migrations automatiques au démarrage), `portfolio-queue`, `portfolio-scheduler` et `portfolio-web` (Caddy). Il **ne crée pas de base** : il utilise le conteneur MySQL existant `db`, sur le réseau Docker externe `mikrotikreseau`.
 
-Sur un serveur (VPS) avec Docker, et un nom de domaine qui pointe vers son adresse IP :
+Une seule fois, créer la base et l'utilisateur dans le conteneur `db` :
+
+```bash
+docker exec -it db mysql -uroot -p -e "CREATE DATABASE portfolio CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; CREATE USER 'portfolio'@'%' IDENTIFIED BY 'mot-de-passe'; GRANT ALL PRIVILEGES ON portfolio.* TO 'portfolio'@'%'; FLUSH PRIVILEGES;"
+```
+
+Puis, sur le serveur :
 
 ```bash
 git clone <ce dépôt> portfolio && cd portfolio
 cp .env.production.example .env
-# Compléter .env : APP_KEY, APP_URL, SITE_ADDRESS (le domaine), DB_PASSWORD, MAIL_*, ADMIN_PASSWORD
-docker compose -f docker-compose.prod.yml run --rm app php artisan key:generate --show   # copier la clé dans APP_KEY
+# Compléter .env : APP_KEY (php artisan key:generate --show, ou base64 de 32 octets),
+# APP_URL, SITE_ADDRESS, DB_PASSWORD, MAIL_*, ADMIN_PASSWORD
 docker compose -f docker-compose.prod.yml up -d --build
-docker compose -f docker-compose.prod.yml exec app php artisan db:seed --force          # premier lancement uniquement
+docker compose -f docker-compose.prod.yml exec portfolio-app php artisan db:seed --force   # premier lancement uniquement
 ```
+
+Ports : par défaut Caddy écoute sur 80 et 443 et obtient seul le certificat HTTPS (`SITE_ADDRESS` = le domaine). Si un autre proxy occupe déjà ces ports, mettre `SITE_ADDRESS=:80`, `HTTP_PORT=8080`, `HTTPS_PORT=8443` et faire pointer ce proxy vers `http://<serveur>:8080`.
 
 Mise à jour :
 
@@ -110,13 +118,13 @@ git pull
 docker compose -f docker-compose.prod.yml up -d --build
 ```
 
-Sauvegarde de la base (le dossier `backups/` est monté dans le conteneur `db`) :
+Sauvegarde de la base :
 
 ```bash
-docker compose -f docker-compose.prod.yml exec db sh -c 'pg_dump -U "$POSTGRES_USER" "$POSTGRES_DB" > /backups/portfolio-$(date +%F).sql'
+docker exec db sh -c 'mysqldump -uportfolio -p"$MOT_DE_PASSE" portfolio' > portfolio-$(date +%F).sql
 ```
 
-Les médias envoyés sont dans le volume Docker `media` : à inclure dans les sauvegardes.
+Les médias envoyés sont dans le volume Docker `portfolio_media` : à inclure dans les sauvegardes.
 
 ## Commandes utiles
 

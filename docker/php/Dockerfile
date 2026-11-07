@@ -11,7 +11,7 @@ RUN apk add --no-cache \
     && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
         icu-dev libpq-dev libzip-dev libpng-dev libjpeg-turbo-dev libwebp-dev freetype-dev linux-headers \
     && docker-php-ext-configure gd --with-jpeg --with-webp --with-freetype \
-    && docker-php-ext-install -j"$(nproc)" bcmath exif gd intl opcache pcntl pdo_pgsql zip \
+    && docker-php-ext-install -j"$(nproc)" bcmath exif gd intl opcache pcntl pdo_mysql pdo_pgsql zip \
     && apk del .build-deps
 
 COPY docker/php/php.ini /usr/local/etc/php/conf.d/zz-app.ini
