@@ -1,4 +1,13 @@
-# SITE_ADDRESS : ":80" en local, "nganjie.example.com" en production (HTTPS automatique).
+# SITE_ADDRESS : ":80" en local ou derrière un autre proxy (Nginx, Cloudflare…),
+# "mon-domaine.com" si Caddy reçoit directement le trafic (HTTPS automatique).
+{
+	servers {
+		# Garde l'IP du visiteur et le protocole (https) transmis par un proxy
+		# placé devant (Nginx du serveur, réseau Docker). Ignoré venant d'Internet.
+		trusted_proxies static private_ranges
+	}
+}
+
 {$SITE_ADDRESS::80} {
 	root * /var/www/html/public
 	encode zstd gzip
