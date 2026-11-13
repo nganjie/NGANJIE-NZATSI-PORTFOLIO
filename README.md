@@ -109,7 +109,16 @@ docker compose -f docker-compose.prod.yml up -d --build
 docker compose -f docker-compose.prod.yml exec portfolio-app php artisan db:seed --force   # premier lancement uniquement
 ```
 
-Ports : par défaut Caddy écoute sur 80 et 443 et obtient seul le certificat HTTPS (`SITE_ADDRESS` = le domaine). Si un autre proxy occupe déjà ces ports, mettre `SITE_ADDRESS=:80`, `HTTP_PORT=8080`, `HTTPS_PORT=8443` et faire pointer ce proxy vers `http://<serveur>:8080`.
+Ports : par défaut Caddy écoute sur 80 et 443 et obtient seul le certificat HTTPS (`SITE_ADDRESS` = le domaine).
+
+Derrière un Nginx déjà installé sur le serveur (avec Cloudflare par exemple) : dans `.env`, `SITE_ADDRESS=:80`, `HTTP_PORT=127.0.0.1:7980`, `HTTPS_PORT=127.0.0.1:7943`, `APP_URL=https://le-domaine`, et dans le bloc `location /` de Nginx :
+
+```nginx
+proxy_pass http://127.0.0.1:7980;
+proxy_set_header Host $host;
+proxy_set_header X-Forwarded-Proto https;
+proxy_set_header X-Forwarded-For $http_cf_connecting_ip;   # IP réelle du visiteur (Cloudflare)
+```
 
 Mise à jour :
 

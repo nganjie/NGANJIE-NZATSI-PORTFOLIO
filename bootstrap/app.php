@@ -22,6 +22,10 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->web(append: [SecurityHeaders::class]);
+
+        // Only Caddy can reach PHP-FPM, and Caddy keeps X-Forwarded-* headers
+        // from private-network proxies only: trust them for the client IP and https.
+        $middleware->trustProxies(at: '*');
         $middleware->alias(['locale' => SetLocale::class]);
         $middleware->redirectGuestsTo(fn () => route('admin.login'));
         $middleware->redirectUsersTo(fn () => route('admin.dashboard'));
