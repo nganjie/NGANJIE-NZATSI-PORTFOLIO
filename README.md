@@ -104,14 +104,12 @@ Puis, sur le serveur :
 git clone <ce dépôt> portfolio && cd portfolio
 cp .env.production.example .env
 # Compléter .env : APP_KEY (php artisan key:generate --show, ou base64 de 32 octets),
-# APP_URL, SITE_ADDRESS, DB_PASSWORD, MAIL_*, ADMIN_PASSWORD
+# APP_URL, DB_PASSWORD, MAIL_*, ADMIN_PASSWORD
 docker compose -f docker-compose.prod.yml up -d --build
 docker compose -f docker-compose.prod.yml exec portfolio-app php artisan db:seed --force   # premier lancement uniquement
 ```
 
-Ports : par défaut Caddy écoute sur 80 et 443 et obtient seul le certificat HTTPS (`SITE_ADDRESS` = le domaine).
-
-Derrière un Nginx déjà installé sur le serveur (avec Cloudflare par exemple) : dans `.env`, `SITE_ADDRESS=:80`, `HTTP_PORT=127.0.0.1:7980`, `HTTPS_PORT=127.0.0.1:7943`, `APP_URL=https://le-domaine`, et dans le bloc `location /` de Nginx :
+Ports : le site est servi par le Nginx du serveur, qui garde les ports 80 et 443 (et le HTTPS, avec Cloudflare). Le conteneur `portfolio-web` n'écoute que sur `127.0.0.1:7980` (réglable avec `HTTP_PORT` dans `.env`). Bloc `location /` de Nginx :
 
 ```nginx
 proxy_pass http://127.0.0.1:7980;
